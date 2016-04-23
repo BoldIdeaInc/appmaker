@@ -84,6 +84,10 @@ var loaders = [
   {
     test: /\.scss$/,
     loader: sassLoader
+  },
+  {
+    test: /\.ejs$/,
+    loader: 'ejs-compiled?htmlmin'
   }
 ];
 

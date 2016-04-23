@@ -12,7 +12,7 @@ var TEST = process.env.NODE_ENV === 'test';
 var jsBundle = path.join('js', util.format('[name].%s.js', pkg.version));
 
 var entry = {
-  app: ['./app.jsx']
+  app: ['./applab/main.js']
 };
 
 if (DEBUG) {
@@ -48,6 +48,10 @@ var config = {
   plugins: plugins,
   resolve: {
     extensions: ['', '.js', '.json', '.jsx']
+  },
+  node: {
+    fs: 'empty',
+    child_process: 'empty'
   },
   devServer: {
     contentBase: path.resolve(pkg.config.buildDir),
