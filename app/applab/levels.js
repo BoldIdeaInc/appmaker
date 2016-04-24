@@ -1,4 +1,4 @@
-import msg from './locale';
+import msg from '../locale';
 import utils from '../utils';
 import {createToolbox as tb, blockOfType, createCategory} from '../block_utils';
 

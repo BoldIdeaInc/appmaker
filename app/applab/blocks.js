@@ -6,8 +6,7 @@
  */
 'use strict';
 
-import msg from './locale';
-import commonMsg from '../locale';
+import msg from '../locale';
 import codegen from '../codegen';
 import utils from '../utils';
 import _ from 'lodash';

@@ -2,7 +2,7 @@
 /* global $ */
 import color from '../../color';
 import rowStyle from './rowStyle';
-import applabMsg from '../locale';
+import applabMsg from '../../locale';
 
 var EventHeaderRow = React.createClass({
   render: function () {

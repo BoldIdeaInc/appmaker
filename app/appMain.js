@@ -71,6 +71,7 @@ export default function (app, levels, options) {
   }
 
   addReadyListener(function () {
+    console.log('Ready listener fired');
     if (options.readonly) {
       if (app.initReadonly) {
         app.initReadonly(options);

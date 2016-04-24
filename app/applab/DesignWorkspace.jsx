@@ -1,4 +1,4 @@
-import applabMsg from './locale';
+import applabMsg from '../locale';
 import DesignModeBox from './DesignModeBox';
 import DesignModeHeaders from './DesignModeHeaders';
 

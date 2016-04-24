@@ -1,6 +1,4 @@
-const messages = {};
-
-const translations = {
+{
   "addEventHeader": "Click a link below to add a function to your code that will be called when the event is triggered.",
   "builtOnCodeStudio": "Built on Code Studio",
   "catActions": "Actions",
@@ -357,10 +355,4 @@ const translations = {
   "tryAgainText": "Keep working",
   "viewData": "View Data",
   "yes": "Yes"
-};
-
-for (let k in translations) {
-  messages[k] = function(){return translations[k]};
 }
-
-export default messages;

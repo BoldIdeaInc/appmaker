@@ -5,9 +5,10 @@ import 'normalize.css/normalize.css';
 import './scss/app.scss';
 
 import React from 'react';
+import ReactDOM from 'react-dom';
 import AppLab from './applab/AppLab';
 
-React.render(
+ReactDOM.render(
   <AppLab />,
   document.getElementById('app')
 );

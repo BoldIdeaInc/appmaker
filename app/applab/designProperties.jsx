@@ -2,7 +2,7 @@
 
 /* global $*/
 
-import applabMsg from './locale';
+import applabMsg from '../locale';
 import color from '../color';
 import elementLibrary from './designElements/library';
 import elementUtils from './designElements/elementUtils';

@@ -88,7 +88,7 @@ var loaders = [
   {
     test: /\.ejs$/,
     loader: 'ejs-compiled?htmlmin'
-  }
+  },
 ];
 
 module.exports = loaders;
