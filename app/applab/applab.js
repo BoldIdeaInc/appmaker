@@ -53,7 +53,7 @@ var setInstructionsInTopPane = actions.setInstructionsInTopPane;
 
 import applabConstants from './constants';
 import consoleApi from '../consoleApi';
-import BoardController from '../makerlab/BoardController';
+//import BoardController from '../makerlab/BoardController';
 
 var ResultType = studioApp.ResultType;
 var TestResults = studioApp.TestResults;
@@ -158,9 +158,11 @@ function loadLevel() {
     Applab.scale[key] = level.scale[key];
   }
 
+  /*
   if (Applab.makerlabEnabled) {
     Applab.makerlabController = new BoardController();
   }
+  */
 }
 
 //

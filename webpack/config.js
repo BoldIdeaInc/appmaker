@@ -12,7 +12,7 @@ var TEST = process.env.NODE_ENV === 'test';
 var jsBundle = path.join('js', util.format('[name].%s.js', pkg.version));
 
 var entry = {
-  app: ['./applab/main.js']
+  app: ['./app.jsx']
 };
 
 if (DEBUG) {
