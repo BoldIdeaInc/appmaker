@@ -1,2 +1,3 @@
 // base locale
-export default window.blockly.common_locale;
+import blockly from 'node-blockly';
+export default blockly.common_locale;

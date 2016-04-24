@@ -4,6 +4,7 @@
  * semi-transparent backdrop. Can be closed by clicking the x, clicking the
  * backdrop, or pressing esc.
  */
+var React = require('react');
 var Dialog = React.createClass({
   propTypes: {
     children: React.PropTypes.element.isRequired,

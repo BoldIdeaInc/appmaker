@@ -1,6 +1,7 @@
 'use strict';
 
 var _ = require('lodash');
+var React = require('react');
 var ProtectedStatefulDiv = require('./ProtectedStatefulDiv');
 var StudioAppWrapper = require('./StudioAppWrapper');
 var CodeWorkspaceContainer = require('./CodeWorkspaceContainer');

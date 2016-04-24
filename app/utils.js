@@ -12,10 +12,6 @@ if (typeof define === 'function' && savedAmd) {
   savedAmd = null;
 }
 
-export function getLodash() {
-  return _;
-}
-
 export function getHammer() {
   return Hammer;
 };

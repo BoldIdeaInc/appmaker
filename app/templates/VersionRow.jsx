@@ -1,5 +1,6 @@
 /* globals $ */
 
+var React = require('react');
 
 /**
  * A single row in the VersionHistory dialog, describing one version of a project.

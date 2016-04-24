@@ -1,5 +1,6 @@
 var color = require('../color');
 var AgeDropdown = require('./AgeDropdown');
+var React = require('react');
 
 var commonMsg = require('../locale');
 

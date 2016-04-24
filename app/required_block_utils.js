@@ -4,7 +4,7 @@ import xml from './xml';
 import blockUtils from './block_utils';
 import utils from './utils';
 import msg from './locale';
-var _ = utils.getLodash();
+import _ from 'lodash';
 
 /**
  * Create the textual XML for a math_number block.

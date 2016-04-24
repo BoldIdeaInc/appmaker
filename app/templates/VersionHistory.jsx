@@ -1,6 +1,7 @@
 /* global dashboard */
 var VersionRow = require('./VersionRow');
 var sourcesApi = require('../clientApi').sources;
+var React = require('react');
 
 /**
  * A component for viewing project version history.

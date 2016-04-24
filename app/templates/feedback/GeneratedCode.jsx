@@ -1,4 +1,5 @@
 var msg = require('../../locale');
+var React = require('react');
 
 var GeneratedCode = React.createClass({
 

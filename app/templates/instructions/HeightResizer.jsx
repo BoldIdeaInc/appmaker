@@ -3,6 +3,7 @@
  * A draggable, horizontal toolbar. As it is dragged, it calls back to onResize
  * which handles any movement.
  */
+var React = require('react');
 
 var Radium = require('radium');
 var color = require('../../color');

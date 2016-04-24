@@ -1,5 +1,6 @@
 var color = require('../color');
 var ShareWarnings = require('./ShareWarnings');
+var React = require('react');
 
 /**
  * Modal for our SharingWarnings.

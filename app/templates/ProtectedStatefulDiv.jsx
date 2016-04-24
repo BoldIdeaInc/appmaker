@@ -1,4 +1,5 @@
 'use strict';
+var React = require('react');
 
 /**
  * A div DOM element that will never update its contents and will throw an

@@ -1,3 +1,3 @@
 // locale for applab
-
-export default window.blockly.applab_locale;
+import blockly from 'node-blockly';
+export default blockly.common_locale;

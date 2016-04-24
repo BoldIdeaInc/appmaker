@@ -1,5 +1,6 @@
 /** @file Row of buttons for switching editor modes. */
 var ToggleButton = require('./ToggleButton');
+var React = require('react');
 
 var ToggleGroup = React.createClass({
   propTypes: {

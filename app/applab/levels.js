@@ -1,9 +1,6 @@
 import msg from './locale';
 import utils from '../utils';
-import blockUtils from '../block_utils';
-var tb = blockUtils.createToolbox;
-var blockOfType = blockUtils.blockOfType;
-var createCategory = blockUtils.createCategory;
+import {createToolbox as tb, blockOfType, createCategory} from '../block_utils';
 
 /*
  * Configuration for all levels.
@@ -191,7 +188,7 @@ levels.custom = {
   // "randomNumber_max": null, // DEPRECATED
 };
 
-levels.ec_simple = utils.extend(levels.custom, {
+levels.ec_simple = Object.assign(levels.custom, {
 });
 
 // Functions in Advanced category currently disabled in all levels:

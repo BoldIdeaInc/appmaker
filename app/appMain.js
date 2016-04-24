@@ -1,5 +1,5 @@
 import utils from './utils';
-var _ = utils.getLodash();
+import _ from 'lodash'
 import requiredBlockUtils from './required_block_utils';
 import StudioApp from './StudioApp';
 import authoredHintUtils from './authoredHintUtils';

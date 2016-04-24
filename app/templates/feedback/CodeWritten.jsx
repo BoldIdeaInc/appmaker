@@ -1,4 +1,6 @@
 var msg = require('../../locale');
+var React = require('react');
+
 
 var CodeWritten = React.createClass({
 

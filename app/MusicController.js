@@ -3,7 +3,7 @@
 'use strict';
 
 import utils from './utils';
-var _ = utils.getLodash();
+import _ from 'lodash';
 
 var debugLogging = false;
 function debug(msg) {

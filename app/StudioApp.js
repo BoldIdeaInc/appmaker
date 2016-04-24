@@ -2,11 +2,10 @@
 
 import aceMode from './acemode/mode-javascript_codeorg';
 import color from './color';
-import parseElement from './xml';
-var parseXmlElement = parseElement.parseXmlElement;
+import {parseElement as parseXmlElement} from './xml';
 import utils from './utils';
 import dropletUtils from './dropletUtils';
-var _ = utils.getLodash();
+import _ from 'lodash';
 import dom from './dom';
 import constants from './constants.js';
 import msg from './locale';

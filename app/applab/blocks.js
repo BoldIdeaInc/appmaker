@@ -10,7 +10,7 @@ import msg from './locale';
 import commonMsg from '../locale';
 import codegen from '../codegen';
 import utils from '../utils';
-var _ = utils.getLodash();
+import _ from 'lodash';
 
 var RANDOM_VALUE = 'random';
 var HIDDEN_VALUE = '"hidden"';

@@ -2,7 +2,7 @@
  * A set of functional blocks
  */
 import utils from './utils';
-var _ = utils.getLodash();
+import _ from 'lodash';
 import msg from './locale';
 
 var ARITHMETIC_TITLE_FONT_SIZE = 25;
