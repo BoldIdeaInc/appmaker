@@ -4,6 +4,7 @@
 /** @file Top-level view for App Lab */
 'use strict';
 
+import React from 'react';
 import {connect} from 'react-redux';
 import actions from './actions';
 import PlaySpaceHeader from './PlaySpaceHeader';

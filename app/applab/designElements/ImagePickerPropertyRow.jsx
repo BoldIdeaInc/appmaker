@@ -1,3 +1,4 @@
+import React from 'react';
 import showAssetManager from '../../assetManagement/show.js';
 import rowStyle from './rowStyle';
 

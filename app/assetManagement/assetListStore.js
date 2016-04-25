@@ -1,6 +1,6 @@
-var assets = [];
+const assets = [];
 
-module.exports = {
+export default {
   reset: function (list) {
     assets = list.slice();
   },
@@ -22,4 +22,4 @@ module.exports = {
       return asset.category === typeFilter;
     }) : assets.slice();
   }
-};
+}

@@ -2,6 +2,7 @@
 
 /* global $ */
 
+import React from 'react';
 import color from '../color';
 import DesignToolbox from './DesignToolbox';
 import DesignProperties from './designProperties';

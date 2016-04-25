@@ -1,4 +1,5 @@
 
+import React from 'react';
 import PropertyRow from './PropertyRow';
 import ColorPickerPropertyRow from './ColorPickerPropertyRow';
 import ImagePickerPropertyRow from './ImagePickerPropertyRow';

@@ -6,11 +6,12 @@
 
 // TODO (brent) - make it so that we dont need to specify .jsx. This currently
 // works in our grunt build, but not in tests
+import ReactDOM from 'react-dom';
 import DesignWorkspace from './DesignWorkspace';
 import showAssetManager from '../assetManagement/show';
 import assetPrefix from '../assetManagement/assetPrefix';
 import elementLibrary from './designElements/library';
-import elementUtils from './designElements/elementUtils';
+import * as elementUtils from './designElements/elementUtils';
 import {singleton as studioApp} from '../StudioApp';
 import {KeyCodes} from '../constants';
 import applabConstants from './constants';

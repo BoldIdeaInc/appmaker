@@ -57,7 +57,7 @@ var config = {
     contentBase: path.resolve(pkg.config.buildDir),
     hot: true,
     noInfo: false,
-    inline: true,
+    iframe: true,
     stats: { colors: true }
   }
 };

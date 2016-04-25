@@ -2,8 +2,9 @@
 
 /* global $ */
 
+import React from 'react';
 import DesignToolboxElement from './DesignToolboxElement';
-import applabMsg from './locale';
+import applabMsg from '../locale';
 
 var IMAGE_BASE_URL = '/blockly/media/applab/design_toolbox/';
 

@@ -1,4 +1,5 @@
 
+import React from 'react';
 import PropertyRow from './PropertyRow';
 import ZOrderRow from './ZOrderRow';
 import EventHeaderRow from './EventHeaderRow';

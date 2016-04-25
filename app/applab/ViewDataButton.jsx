@@ -4,7 +4,8 @@
 /** @file Button that opens the data browser */
 /* global $ */
 
-import applabMsg from './locale';
+import React from 'react';
+import applabMsg from '../locale';
 import styles from '../templates/ToggleButtonStyles';
 
 /**

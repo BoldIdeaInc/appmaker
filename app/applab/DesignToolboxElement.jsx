@@ -2,6 +2,7 @@
 
 /* global $ */
 
+import React from 'react';
 import library from './designElements/library';
 
 export default React.createClass({

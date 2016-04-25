@@ -1,3 +1,4 @@
+import Blockly from 'node-blockly';
 import utils from './utils';
 import _ from 'lodash'
 import requiredBlockUtils from './required_block_utils';
@@ -22,7 +23,7 @@ window.__TestInterface = {
 };
 
 import {addReadyListener} from './dom';
-import blocksCommon from './blocksCommon';
+import * as blocksCommon from './blocksCommon';
 
 export default function (app, levels, options) {
   // If a levelId is not provided, then options.level is specified in full.

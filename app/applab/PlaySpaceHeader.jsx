@@ -2,6 +2,7 @@
 
 /** @file Row of controls above the visualization. */
 
+import React from 'react';
 import constants from './constants';
 import msg from '../locale';
 import actions from './actions';

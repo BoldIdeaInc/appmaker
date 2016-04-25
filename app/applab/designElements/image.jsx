@@ -3,6 +3,7 @@
 /* global $ */
 
 import PropertyRow from './PropertyRow';
+import React from 'react';
 import ColorPickerPropertyRow from './ColorPickerPropertyRow';
 import BooleanPropertyRow from './BooleanPropertyRow';
 import ImagePickerPropertyRow from './ImagePickerPropertyRow';

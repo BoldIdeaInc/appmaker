@@ -2,17 +2,8 @@
  *  @see http://redux.js.org/docs/api/createStore.html */
 'use strict';
 
-import redux from 'redux';
-var createLogger;
-
-// conditionally import redux-logger
-if (process.env.NODE_ENV !== "production") {
-  System.import(['redux-logger'], function(module) {
-    createLogger = module;
-  }, function(err) {
-    throw err;
-  });
-}
+import {createStore as reduxCreateStore, applyMiddleware, compose} from 'redux';
+import createLogger from 'redux-logger';
 
 /**
  * Creates a store configured for use the way we want for Code.org.
@@ -39,11 +30,11 @@ export default function createStore(reducer, initialState) {
         window.devToolsExtension() :
         function (f) { return f; };
 
-    return redux.createStore(reducer, initialState, redux.compose(
-        redux.applyMiddleware(reduxLogger),
+    return reduxCreateStore(reducer, initialState, compose(
+        applyMiddleware(reduxLogger),
         devTools
     ));
   }
 
-  return redux.createStore(reducer, initialState);
+  return reduxCreateStore(reducer, initialState);
 };

@@ -2,6 +2,7 @@
 
 /* global $*/
 
+import React from 'react';
 import applabMsg from '../locale';
 import color from '../color';
 import elementLibrary from './designElements/library';

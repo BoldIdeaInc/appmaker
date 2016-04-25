@@ -60,6 +60,10 @@ if (DEBUG || TEST) {
 
 var loaders = [
   {
+    test: /entities\/maps\/.+?.json/,
+    loaders: jsonLoader
+  },
+  {
     test: /\.jsx?$/,
     exclude: /node_modules/,
     loaders: jsxLoader

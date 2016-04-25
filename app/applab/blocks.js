@@ -6,6 +6,7 @@
  */
 'use strict';
 
+import blockly from 'node-blockly';
 import msg from '../locale';
 import codegen from '../codegen';
 import utils from '../utils';
@@ -34,8 +35,7 @@ var generateSetterCode = function (opts) {
 export function install(blockly, blockInstallOptions) {
   var skin = blockInstallOptions.skin;
   var isK1 = blockInstallOptions.isK1;
-  var generator = blockly.Generator.get('JavaScript');
-  blockly.JavaScript = generator;
+  var generator = blockly.JavaScript;
 
   generator.applab_eventHandlerPrologue = function () {
     return '\n';

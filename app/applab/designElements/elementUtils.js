@@ -172,6 +172,6 @@ export function isIdAvailable(newId, options) {
   return true;
 };
 
-export function getScreensgetScreens() {
+export function getScreens() {
   return $('#designModeViz > .screen');
 };

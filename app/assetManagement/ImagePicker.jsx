@@ -1,6 +1,7 @@
+var React = require('react');
 var AssetManager = require('./AssetManager');
 var color = require('../color');
-var IconLibrary = window.dashboard.IconLibrary;
+var IconLibrary = require('../studio/components/IconLibrary');
 var ICON_PREFIX = require('../applab/constants').ICON_PREFIX;
 
 /**

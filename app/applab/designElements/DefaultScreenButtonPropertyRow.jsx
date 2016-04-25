@@ -1,3 +1,4 @@
+import React from 'react';
 import color from '../../color';
 import rowStyle from './rowStyle';
 import elementUtils from './elementUtils';

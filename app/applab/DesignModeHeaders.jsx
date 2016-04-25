@@ -1,5 +1,5 @@
-import applabMsg from './locale';
-import msg from '../locale';
+import React from 'react';
+import applabMsg from '../locale';
 
 export default React.createClass({
   propTypes: {
@@ -56,11 +56,11 @@ export default React.createClass({
         <div id="design-toolbox-header" className="workspace-header" style={styles.toolboxHeader}>
           {manageAssetsIcon}
           <span>{applabMsg.designToolboxHeader()}</span>
-          <span className="workspace-header-clickable" onClick={this.onToggleToolbox}>&nbsp;{msg.hideToolbox()}</span>
+          <span className="workspace-header-clickable" onClick={this.onToggleToolbox}>&nbsp;{applabMsg.hideToolbox()}</span>
         </div>
         <div className="workspace-header" onClick={this.onToggleToolbox}
             style={styles.showToolboxHeader}>
-          <span className="workspace-header-clickable">{msg.showToolbox()}</span>
+          <span className="workspace-header-clickable">{applabMsg.showToolbox()}</span>
           {manageAssetsIcon}
         </div>
         <div id="design-workspace-header" className="workspace-header">

@@ -1,3 +1,4 @@
+import React from 'react';
 import rowStyle from './rowStyle';
 
 var BooleanPropertyRow = React.createClass({

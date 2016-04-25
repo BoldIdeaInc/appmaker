@@ -1,5 +1,6 @@
 /* global $ */
 /* global $ */
+import React from 'react';
 import rowStyle from './rowStyle';
 
 var OptionsSelectRow = React.createClass({

@@ -1,22 +1,31 @@
 import React from 'react';
 import appMain from '../appMain';
 import AppLab from './applab';
-import blocks from './blocks';
+import * as blocks from './blocks';
 import levels from './levels';
-import skins from './skins';
+import * as skins from './skins';
 
-const applabMain = function (options) {
+const defaultOptions = {
+  baseUrl: '/',
+  locale: 'en_us',
+  level: 'full_sandbox',
+  containerId: 'main'
+};
+
+const applabMain = function (opts) {
+  const options = Object.assign(opts || {}, options);
   options.skinsModule = skins;
   options.blocksModule = blocks;
-  appMain(Applab, levels, options);
+  appMain(AppLab, levels, options);
 }
 
 export default class App extends React.Component {
   render() {
-    console.log('Rendering')
-    applabMain();
+    // TODO certain options could be set in localStorage, eg: locale
+    const opts = Object.assign(defaultOptions, {});
+    applabMain(opts);
     return (
-      <div></div>
+      <div id="main"></div>
     );
   }
 }

@@ -1,4 +1,5 @@
 var assetsApi = require('../clientApi').assets;
+var React = require('react');
 
 var defaultIcons = {
   image: 'fa fa-picture-o',

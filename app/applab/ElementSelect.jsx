@@ -1,3 +1,4 @@
+import React from 'react';
 import elementUtils from './designElements/elementUtils.js';
 
 export default React.createClass({

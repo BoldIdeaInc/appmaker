@@ -11,8 +11,11 @@ var cssBundle = path.join('css', util.format('[name].%s.css', pkg.version));
 
 var plugins = [
   new webpack.optimize.OccurenceOrderPlugin(),
-  new webpack.IgnorePlugin(/entities/),
-  new webpack.ContextReplacementPlugin(/bindings$/, /^$/)
+  new webpack.ContextReplacementPlugin(/bindings$/, /^$/),
+  new webpack.ProvidePlugin({
+    $: "jquery",
+    jQuery: "jquery"
+  }),
 ];
 if (DEBUG) {
   plugins.push(

@@ -8,9 +8,11 @@
 
 /* //eslint no-unused-vars: "off" */
 
+import $ from 'jquery';
+import React from 'react';
+import ReactDom from 'react-dom';
 import {singleton as studioApp} from '../StudioApp';
-import commonMsg from '../locale';
-import applabMsg from './locale';
+import applabMsg from '../locale';
 import skins from '../skins';
 import codegen from '../codegen';
 import api from './api';
@@ -20,9 +22,9 @@ import blocks from './blocks';
 import AppLabView from './AppLabView';
 import codeWorkspaceEjs from '../templates/codeWorkspace.html.ejs';
 import visualizationColumnEjs from '../templates/visualizationColumn.html.ejs';
-import dom from '../dom';
+import * as dom from '../dom';
 import {parseElement as parseXmlElement} from '../xml';
-import utils from '../utils';
+import * as utils from '../utils';
 import dropletUtils from '../dropletUtils';
 import dropletConfig from './dropletConfig';
 import AppStorage from './appStorage';
@@ -46,7 +48,7 @@ import annotationList from '../acemode/annotationList';
 import createStore from '../redux';
 import {Provider} from 'react-redux';
 import {rootReducer} from './reducers';
-import actions from './actions';
+import * as actions from './actions';
 var setInitialLevelProps = actions.setInitialLevelProps;
 var changeInterfaceMode = actions.changeInterfaceMode;
 var setInstructionsInTopPane = actions.setInstructionsInTopPane;
@@ -384,7 +386,7 @@ function renderFooterInSharedGame() {
       hideOnMobile: true
     },
     {
-      text: commonMsg.openWorkspace(),
+      text: applabMsg.openWorkspace(),
       link: window.location.href + '/view'
     },
     {
@@ -726,7 +728,7 @@ Applab.init = function (config) {
     Applab.setLevelHtml(level.levelHtml || level.startHtml || '');
 
     if (config.level.projectTemplateLevelName) {
-      studioApp.displayWorkspaceAlert('warning', <div>{commonMsg.projectWarning()}</div>);
+      studioApp.displayWorkspaceAlert('warning', <div>{applabMsg.projectWarning()}</div>);
     }
 
     studioApp.alertIfAbusiveProject('#codeWorkspace');
@@ -974,7 +976,7 @@ Applab.reactMountPoint_ = null;
  */
 Applab.render = function () {
   var nextProps = $.extend({}, Applab.reactInitialProps_, {
-    isEditingProject: window.dashboard && window.dashboard.project.isEditing(),
+    isEditingProject: window.dashboard && window.dashboard.project && window.dashboard.project.isEditing(),
     screenIds: designMode.getAllScreenIds(),
     onViewDataButton: Applab.onViewData,
     onScreenCreate: designMode.createScreen
@@ -1406,8 +1408,8 @@ Applab.showConfirmationDialog = function (config) {
 
   var buttons = document.createElement('div');
   ReactDOM.render(React.createElement(DialogButtons, {
-    confirmText: commonMsg.dialogOK(),
-    cancelText: commonMsg.dialogCancel()
+    confirmText: applabMsg.dialogOK(),
+    cancelText: applabMsg.dialogCancel()
   }), buttons);
   contentDiv.appendChild(buttons);
 
@@ -1438,8 +1440,8 @@ Applab.showConfirmationDialog = function (config) {
 
 Applab.onPuzzleSubmit = function () {
   Applab.showConfirmationDialog({
-    title: commonMsg.submitYourProject(),
-    text: commonMsg.submitYourProjectConfirm(),
+    title: applabMsg.submitYourProject(),
+    text: applabMsg.submitYourProjectConfirm(),
     onConfirm: function () {
       Applab.onPuzzleComplete(true);
     }
@@ -1456,8 +1458,8 @@ Applab.unsubmit = function () {
 
 Applab.onPuzzleUnsubmit = function () {
   Applab.showConfirmationDialog({
-    title: commonMsg.unsubmitYourProject(),
-    text: commonMsg.unsubmitYourProjectConfirm(),
+    title: applabMsg.unsubmitYourProject(),
+    text: applabMsg.unsubmitYourProjectConfirm(),
     onConfirm: function () {
       Applab.unsubmit();
     }

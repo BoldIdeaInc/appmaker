@@ -4,6 +4,7 @@
 /** @file Dropdown for selecting design mode screens */
 /* global Applab */
 
+import React from 'react';
 import color from '../color';
 import constants from './constants';
 import {connect} from 'react-redux';

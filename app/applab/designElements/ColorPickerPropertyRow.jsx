@@ -1,5 +1,6 @@
 /* global ColorPicker */
 /* global ColorPicker */
+import React from 'react';
 import rowStyle from './rowStyle';
 import {default as ColorPicker} from 'react-color';
 
