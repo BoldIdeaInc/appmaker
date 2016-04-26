@@ -10,7 +10,7 @@
 
 import $ from 'jquery';
 import React from 'react';
-import ReactDom from 'react-dom';
+import ReactDOM from 'react-dom';
 import {singleton as studioApp} from '../StudioApp';
 import applabMsg from '../locale';
 import skins from '../skins';
