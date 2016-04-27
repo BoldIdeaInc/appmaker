@@ -1,11 +1,11 @@
 /**
  * @overview React component to allow for easy editing and creation of
  * Cells
- * @see @cdo/apps/maze/cell
+ * @see ../../maze/cell
  */
 /* global React */
 var React = require('react');
-var tiles = require('@cdo/apps/maze/tiles');
+var tiles = require('../../maze/tiles');
 var SquareType = tiles.SquareType;
 
 var CellEditor = React.createClass({

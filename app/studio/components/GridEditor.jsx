@@ -6,9 +6,9 @@
 /* global React, dashboard */
 
 var React = require('react');
-var BeeCell = require('@cdo/apps/maze/beeCell');
-var Cell = require('@cdo/apps/maze/cell');
-var mazeUtils = require('@cdo/apps/maze/mazeUtils');
+var BeeCell = require('../../maze/beeCell');
+var Cell = require('../../maze/cell');
+var mazeUtils = require('../../maze/mazeUtils');
 
 var BeeCellEditor = require('./BeeCellEditor');
 var CellEditor = require('./CellEditor');

@@ -1,12 +1,12 @@
 /**
  * @overview React component to allow for easy editing and creation of
  * BeeCells
- * @see @cdo/apps/maze/beeCell
+ * @see ../../maze/beeCell
  */
 
 var React = require('react');
-var BeeCell = require('@cdo/apps/maze/beeCell');
-var tiles = require('@cdo/apps/maze/tiles');
+var BeeCell = require('../../maze/beeCell');
+var tiles = require('../../maze/tiles');
 var SquareType = tiles.SquareType;
 
 var BeeCellEditor = React.createClass({

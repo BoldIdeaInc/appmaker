@@ -3,10 +3,10 @@
 import aceMode from './acemode/mode-javascript_codeorg';
 import color from './color';
 import {parseElement as parseXmlElement} from './xml';
-import utils from './utils';
+import * as utils from './utils';
 import dropletUtils from './dropletUtils';
 import _ from 'lodash';
-import dom from './dom';
+import * as dom from './dom';
 import constants from './constants.js';
 import msg from './locale';
 import blockUtils from './block_utils';
@@ -22,13 +22,13 @@ import AuthoredHints from './authoredHints';
 import Instructions from './templates/instructions/Instructions';
 import DialogButtons from './templates/DialogButtons';
 import WireframeSendToPhone from './templates/WireframeSendToPhone';
-import assets from './clientApi';
+import {assets as assetsApi} from './clientApi';
 import assetPrefix from './assetManagement/assetPrefix';
 import assetListStore from './assetManagement/assetListStore';
 import annotationList from './acemode/annotationList';
 import processMarkdown from 'marked';
 import ResizeSensor from './ResizeSensor';
-var assetsApi = assets;
+import {Blockly} from './blockly-core';
 var copyrightStrings;
 
 /**

@@ -26,9 +26,11 @@ var plugins = [
 ];
 
 if (DEBUG) {
+  /*
   plugins.push(
     new webpack.HotModuleReplacementPlugin()
   );
+  */
 } else if (!TEST) {
   plugins.push(
     new ExtractTextPlugin(cssBundle, {
@@ -103,6 +105,13 @@ if (DEBUG || TEST) {
 
 var loaders = [
   {
+    // loader for legacy google closure code
+    test: /blockly\/.*\.js/,
+    loaders: ['closure-loader'],
+    exclude: [/node_modules/, /test/]
+  },
+  {
+    // loader for entities json files
     test: /entities\/maps\/.+?.json/,
     loaders: jsonLoader
   },
@@ -156,7 +165,7 @@ if (DEBUG) {
       pkg.config.devPort
     )
   );
-  entry.app.push('webpack/hot/dev-server');
+  //entry.app.push('webpack/hot/dev-server');
 }
 
 var config = {
@@ -188,17 +197,23 @@ var config = {
   },
   devServer: {
     contentBase: path.resolve(pkg.config.buildDir),
-    hot: true,
-    noInfo: false,
-    iframe: true,
+    hot: false,
+    noInfo: true,
+    inline: true,
     stats: { colors: true }
+  },
+  closureLoader: {
+    paths: [
+      __dirname + '/app/blockly'
+    ],
+    es6mode: true
   }
 };
 
 /**
  * Dev server
  */
-// Run dev server if file is called from commandline with devserver argument
+// Run dev server if file is called from commandline with server argument
 if (!module.parent && process.argv.length > 2 && process.argv[2] === 'server') {
   var server = new WebpackDevServer(
     webpack(config),

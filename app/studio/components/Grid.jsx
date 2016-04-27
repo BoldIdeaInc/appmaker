@@ -1,7 +1,7 @@
 /* global React */
 
 var React = require('react');
-var mazeUtils = require('@cdo/apps/maze/mazeUtils');
+var mazeUtils = require('../../maze/mazeUtils');
 
 var Cell = React.createClass({
   propTypes: {

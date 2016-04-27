@@ -28,8 +28,6 @@ import * as utils from '../utils';
 import dropletUtils from '../dropletUtils';
 import dropletConfig from './dropletConfig';
 import AppStorage from './appStorage';
-import constants from '../constants';
-var KeyCodes = constants.KeyCodes;
 import apiTimeoutList from '../timeoutList';
 import designMode from './designMode';
 import applabTurtle from './applabTurtle';
@@ -60,6 +58,7 @@ import consoleApi from '../consoleApi';
 var ResultType = studioApp.ResultType;
 var TestResults = studioApp.TestResults;
 var ApplabInterfaceMode = applabConstants.ApplabInterfaceMode;
+var KeyCodes = applabConstants.KeyCodes;
 
 /**
  * Create a namespace for the application.

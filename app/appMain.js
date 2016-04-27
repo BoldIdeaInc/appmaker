@@ -1,4 +1,4 @@
-import Blockly from 'node-blockly';
+import {Blockly} from './blockly-core';
 import utils from './utils';
 import _ from 'lodash'
 import requiredBlockUtils from './required_block_utils';

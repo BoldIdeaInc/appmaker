@@ -22,7 +22,7 @@ var HEADER_HEIGHT = styleConstants['workspace-headers-height'];
  */
 var AppLabView = React.createClass({
   propTypes: {
-    isEditingProject: React.PropTypes.bool.isRequired,
+    isEditingProject: React.PropTypes.bool,
     isReadOnlyWorkspace: React.PropTypes.bool.isRequired,
     instructionsMarkdown: React.PropTypes.string,
     instructionsCollapsed: React.PropTypes.bool.isRequired,
