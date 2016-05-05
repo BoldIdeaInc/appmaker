@@ -20,9 +20,15 @@ var plugins = [
   new webpack.optimize.OccurenceOrderPlugin(),
   new webpack.ContextReplacementPlugin(/bindings$/, /^$/),
   new webpack.ProvidePlugin({
-    $: "jquery",
-    jQuery: "jquery"
+    $: 'jquery',
+    jQuery: 'jquery'
   }),
+  new webpack.ProvidePlugin({
+    goog: 'google-closure-library/closure/goog/base'
+  }),
+  new webpack.optimize.UglifyJsPlugin({
+    compress: {warnings: false}
+  })
 ];
 
 if (DEBUG) {
@@ -36,7 +42,9 @@ if (DEBUG) {
     new ExtractTextPlugin(cssBundle, {
       allChunks: true
     }),
-    new webpack.optimize.UglifyJsPlugin(),
+    new webpack.optimize.UglifyJsPlugin({
+      mangle: false
+    }),
     new webpack.optimize.DedupePlugin(),
     new webpack.DefinePlugin({
       'process.env': {
@@ -75,20 +83,18 @@ var sassParams = [
 if (DEBUG || TEST) {
   jsxLoader = [];
   if (!TEST) {
-    jsxLoader.push('react-hot');
+    // jsxLoader.push('react-hot');
   }
   jsxLoader.push('babel-loader?optional[]=runtime&stage=0&plugins=rewire');
   sassParams.push('sourceMap', 'sourceMapContents=true');
-  sassLoader = [
-    'style-loader',
-    'css-loader?sourceMap&modules&localIdentName=[name]__[local]___[hash:base64:5]',
-    'postcss-loader',
-    'sass-loader?' + sassParams.join('&')
-  ].join('!');
   cssLoader = [
     'style-loader',
     'css-loader?sourceMap&modules&localIdentName=[name]__[local]___[hash:base64:5]',
     'postcss-loader'
+  ].join('!');
+  sassLoader = [
+    cssLoader,
+    'sass-loader?' + sassParams.join('&')
   ].join('!');
 } else {
   jsxLoader = ['babel-loader?optional[]=runtime&stage=0&plugins=rewire'];
@@ -105,19 +111,34 @@ if (DEBUG || TEST) {
 
 var loaders = [
   {
-    // loader for legacy google closure code
-    test: /blockly\/.*\.js/,
+    // set up "goog" global
+    test: /google-closure-library\/closure\/goog\/(base|bootstrap)/,
+    exclude: [/testing/],
+    loaders: [
+      'imports?this=>{goog:{}}&goog=>this.goog',
+      'exports?goog'
+    ]
+  },
+  {
+    // Loader for closure library
+    test: /google-closure-library\/closure\/goog\/.*\.js/,
     loaders: ['closure-loader'],
-    exclude: [/node_modules/, /test/]
+    exclude: [/base\.js$/, /bootstrap\/nodejs\.js$/]
+  },
+  {
+    // loaders blockly closure code
+    test: /blockly\/.*\.js/,
+    loaders: ['closure-loader']
   },
   {
     // loader for entities json files
     test: /entities\/maps\/.+?.json/,
+    exclude: [/stats.json/],
     loaders: jsonLoader
   },
   {
     test: /\.jsx?$/,
-    exclude: /node_modules/,
+    exclude: [/node_modules/],
     loaders: jsxLoader
   },
   {
@@ -144,9 +165,8 @@ var loaders = [
   {
     test: /\.ejs$/,
     loader: 'ejs-compiled?htmlmin'
-  },
+  }
 ];
-
 
 /**
  * Main config
@@ -165,7 +185,7 @@ if (DEBUG) {
       pkg.config.devPort
     )
   );
-  //entry.app.push('webpack/hot/dev-server');
+  // entry.app.push('webpack/hot/dev-server');
 }
 
 var config = {
@@ -189,7 +209,13 @@ var config = {
   ],
   plugins: plugins,
   resolve: {
-    extensions: ['', '.js', '.json', '.jsx']
+    extensions: ['', '.js', '.json', '.jsx'],
+    alias: {
+      // google-closure-library refers to promises_aplus_tests
+      'promises_aplus_tests': 'promises-aplus-tests',
+      'popupdatepicker.css$': 'popupdatepicker.css',
+      'cssom_test_import_1.css$': 'cssom_test_import_1.css'
+    }
   },
   node: {
     fs: 'empty',
@@ -204,9 +230,11 @@ var config = {
   },
   closureLoader: {
     paths: [
-      __dirname + '/app/blockly'
+      path.join(__dirname, 'app', 'blockly'),
+      path.join(__dirname, 'node_modules', 'google-closure-library', 'closure', 'goog')
     ],
-    es6mode: true
+    es6mode: true,
+    watch: false
   }
 };
 
@@ -224,6 +252,7 @@ if (!module.parent && process.argv.length > 2 && process.argv[2] === 'server') {
   var host = pkg.config.devHost;
 
   server.listen(port, host, function (err) {
+    if (err) throw err;
     var url = util.format('http://%s:%d', host, port);
     console.log('Listening at %s', url);
     opn(url);
