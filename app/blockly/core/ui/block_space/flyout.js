@@ -26,6 +26,7 @@
 goog.provide('Blockly.Flyout');
 
 goog.require('Blockly.Block');
+goog.require('Blockly.BlockSvg');
 goog.require('Blockly.Comment');
 goog.require('goog.math.Rect');
 

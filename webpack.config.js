@@ -7,8 +7,9 @@ var WebpackDevServer = require('webpack-dev-server');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var pkg = require('./package.json');
 
-var DEBUG = process.env.NODE_ENV === 'development';
-var TEST = process.env.NODE_ENV === 'test';
+var ENV = process.env.NODE_ENV || 'development';
+var DEBUG = ENV === 'development';
+var TEST = ENV === 'test';
 
 var jsBundle = path.join('js', util.format('[name].%s.js', pkg.version));
 var cssBundle = path.join('css', util.format('[name].%s.css', pkg.version));
@@ -27,7 +28,10 @@ var plugins = [
     goog: 'google-closure-library/closure/goog/base'
   }),
   new webpack.optimize.UglifyJsPlugin({
-    compress: {warnings: false}
+    compress: {
+      drop_debugger: false,
+      warnings: false
+    }
   })
 ];
 
@@ -111,6 +115,14 @@ if (DEBUG || TEST) {
 
 var loaders = [
   {
+    // set "COMPILED" global for closure-library
+    test: /google-closure-library\/closure\/goog/,
+    exclude: [/testing/],
+    loaders: [
+      'imports?COMPILED=>false'
+    ]
+  },
+  {
     // set up "goog" global
     test: /google-closure-library\/closure\/goog\/(base|bootstrap)/,
     exclude: [/testing/],
@@ -126,7 +138,7 @@ var loaders = [
     exclude: [/base\.js$/, /bootstrap\/nodejs\.js$/]
   },
   {
-    // loaders blockly closure code
+    // loader for blockly closure code
     test: /blockly\/.*\.js/,
     loaders: ['closure-loader']
   },
@@ -193,7 +205,7 @@ var config = {
   cache: DEBUG,
   debug: DEBUG,
   target: 'web',
-  devtool: DEBUG || TEST ? 'inline-source-map' : false,
+  devtool: DEBUG || TEST ? 'eval-source-map' : false,
   entry: entry,
   output: {
     path: path.resolve(pkg.config.buildDir),

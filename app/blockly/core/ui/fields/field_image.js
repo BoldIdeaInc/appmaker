@@ -28,6 +28,7 @@ goog.provide('Blockly.FieldImage');
 goog.require('Blockly.Field');
 goog.require('goog.userAgent');
 goog.require('Blockly.ImageDimensionCache');
+goog.require('Blockly.BlockSvg');
 
 /**
  * Class for an image.

@@ -29,7 +29,6 @@ goog.provide('Blockly.Field');
 
 // TODO(scr): Fix circular dependencies
 // goog.require('Blockly.Block');
-goog.require('Blockly.BlockSvg');
 
 
 /**

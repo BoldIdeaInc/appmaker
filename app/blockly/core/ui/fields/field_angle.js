@@ -23,8 +23,10 @@
  */
 'use strict';
 
+
 goog.provide('Blockly.FieldAngle');
 
+goog.require('Blockly.Field');
 goog.require('Blockly.FieldTextInput');
 
 

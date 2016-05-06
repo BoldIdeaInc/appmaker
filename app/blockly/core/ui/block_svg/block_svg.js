@@ -25,6 +25,7 @@
 
 goog.provide('Blockly.BlockSvg');
 
+goog.require('Blockly.Field');
 goog.require('goog.userAgent');
 
 /**

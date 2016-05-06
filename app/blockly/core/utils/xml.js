@@ -26,6 +26,7 @@
 'use strict';
 
 goog.provide('Blockly.Xml');
+goog.require('Blockly.BlockSvg');
 
 // TODO(scr): Fix circular dependencies
 // goog.require('Blockly.Block');

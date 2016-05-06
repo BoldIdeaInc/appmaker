@@ -24,6 +24,7 @@
 'use strict';
 
 goog.provide('Blockly.Icon');
+goog.require('Blockly.BlockSvg');
 
 /**
  * Class for an icon.

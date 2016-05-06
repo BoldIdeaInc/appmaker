@@ -4,5 +4,8 @@
     semi: ["error", "always"],
     space-before-function-paren: ["error", {"anonymous": "always", "named": "never"}],
     object-shorthand: ["error", "never"]
+  },
+  globals: {
+    goog: true
   }
 }

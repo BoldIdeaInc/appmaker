@@ -6,7 +6,7 @@
  */
 'use strict';
 
-import {Blockly as blockly} from '../blockly-core';
+import {Blockly} from '../blockly';
 import msg from '../locale';
 import codegen from '../codegen';
 import utils from '../utils';

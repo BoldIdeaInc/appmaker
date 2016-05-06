@@ -27,6 +27,7 @@ goog.provide('Blockly.Connection');
 goog.provide('Blockly.ConnectionDB');
 
 goog.require('Blockly.BlockSpace');
+goog.require('Blockly.BlockSvg');
 goog.require('goog.array');
 goog.require('goog.string');
 

@@ -26,6 +26,7 @@
 goog.provide('Blockly.Bubble');
 
 goog.require('Blockly.BlockSpace');
+goog.require('Blockly.BlockSvg');
 
 
 /**

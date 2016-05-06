@@ -5,6 +5,7 @@
 'use strict';
 
 goog.provide('Blockly.BlockSvgFunctional');
+goog.require('Blockly.BlockSvg');
 
 /**
  * Render this block with a header row that has a different color.

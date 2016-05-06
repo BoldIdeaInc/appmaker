@@ -5,6 +5,7 @@
 
 goog.provide('Blockly.FieldIcon');
 
+goog.require('Blockly.Field');
 goog.require('Blockly.FieldLabel');
 
 Blockly.FieldIcon = function(text) {

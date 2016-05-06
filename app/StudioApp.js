@@ -1,5 +1,4 @@
-/* global Blockly, ace:true, droplet, dashboard, addToHome */
-
+import {Blockly} from './blockly';
 import aceMode from './acemode/mode-javascript_codeorg';
 import color from './color';
 import {parseElement as parseXmlElement} from './xml';
@@ -28,7 +27,6 @@ import assetListStore from './assetManagement/assetListStore';
 import annotationList from './acemode/annotationList';
 import processMarkdown from 'marked';
 import ResizeSensor from './ResizeSensor';
-import {Blockly} from './blockly-core';
 var copyrightStrings;
 
 /**
