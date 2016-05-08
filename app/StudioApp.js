@@ -1,4 +1,4 @@
-import {Blockly} from './blockly';
+import Blockly from './blockly';
 import aceMode from './acemode/mode-javascript_codeorg';
 import color from './color';
 import {parseElement as parseXmlElement} from './xml';

@@ -205,7 +205,7 @@ var config = {
   cache: DEBUG,
   debug: DEBUG,
   target: 'web',
-  devtool: DEBUG || TEST ? 'eval-source-map' : false,
+  devtool: DEBUG || TEST ? 'eval' : false,
   entry: entry,
   output: {
     path: path.resolve(pkg.config.buildDir),
