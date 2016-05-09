@@ -7,7 +7,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import AppLab from './applab/AppLab';
 
-import project from './studio/initApp/project.js';
+import project from './studio/initApp/project';
 
 window.dashboard = window.dashboard || {};
 window.dashboard.project = project;

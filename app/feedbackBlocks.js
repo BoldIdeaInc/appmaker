@@ -1,3 +1,4 @@
+import Blockly from './blockly';
 import constants from './constants';
 import {parseElement as parseXmlElement} from './xml';
 

@@ -1,3 +1,4 @@
+var fs = require('fs');
 var path = require('path');
 var util = require('util');
 var opn = require('opn');
@@ -5,6 +6,7 @@ var autoprefixer = require('autoprefixer-core');
 var webpack = require('webpack');
 var WebpackDevServer = require('webpack-dev-server');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
+var StatsPlugin = require('stats-webpack-plugin');
 var pkg = require('./package.json');
 
 var ENV = process.env.NODE_ENV || 'development';
@@ -24,14 +26,20 @@ var plugins = [
     $: 'jquery',
     jQuery: 'jquery'
   }),
-  new webpack.ProvidePlugin({
-    goog: 'google-closure-library/closure/goog/base'
-  }),
   new webpack.optimize.UglifyJsPlugin({
     compress: {
       drop_debugger: false,
       warnings: false
     }
+  }),
+  new webpack.DefinePlugin({
+    ENV: JSON.stringify(require(process.env.APP_CONFIG || './config')),
+    'process.env': {
+      NODE_ENV: JSON.stringify(process.env.NODE_ENV)
+    }
+  }),
+  new StatsPlugin('stats.json', {
+    chunkModules: true
   })
 ];
 
@@ -50,11 +58,6 @@ if (DEBUG) {
       mangle: false
     }),
     new webpack.optimize.DedupePlugin(),
-    new webpack.DefinePlugin({
-      'process.env': {
-        NODE_ENV: JSON.stringify('production')
-      }
-    }),
     new webpack.NoErrorsPlugin()
   );
 }
@@ -114,34 +117,6 @@ if (DEBUG || TEST) {
 }
 
 var loaders = [
-  {
-    // set "COMPILED" global for closure-library
-    test: /google-closure-library\/closure\/goog/,
-    exclude: [/testing/],
-    loaders: [
-      'imports?COMPILED=>false'
-    ]
-  },
-  {
-    // set up "goog" global
-    test: /google-closure-library\/closure\/goog\/(base|bootstrap)/,
-    exclude: [/testing/],
-    loaders: [
-      'imports?this=>{goog:{}}&goog=>this.goog',
-      'exports?goog'
-    ]
-  },
-  {
-    // Loader for closure library
-    test: /google-closure-library\/closure\/goog\/.*\.js/,
-    loaders: ['closure-loader'],
-    exclude: [/base\.js$/, /bootstrap\/nodejs\.js$/]
-  },
-  {
-    // loader for blockly closure code
-    test: /blockly\/.*\.js/,
-    loaders: ['closure-loader']
-  },
   {
     // loader for entities json files
     test: /entities\/maps\/.+?.json/,
@@ -221,13 +196,7 @@ var config = {
   ],
   plugins: plugins,
   resolve: {
-    extensions: ['', '.js', '.json', '.jsx'],
-    alias: {
-      // google-closure-library refers to promises_aplus_tests
-      'promises_aplus_tests': 'promises-aplus-tests',
-      'popupdatepicker.css$': 'popupdatepicker.css',
-      'cssom_test_import_1.css$': 'cssom_test_import_1.css'
-    }
+    extensions: ['', '.js', '.json', '.jsx']
   },
   node: {
     fs: 'empty',
@@ -235,18 +204,11 @@ var config = {
   },
   devServer: {
     contentBase: path.resolve(pkg.config.buildDir),
+    profile: true,
     hot: false,
     noInfo: true,
     inline: true,
     stats: { colors: true }
-  },
-  closureLoader: {
-    paths: [
-      path.join(__dirname, 'app', 'blockly'),
-      path.join(__dirname, 'node_modules', 'google-closure-library', 'closure', 'goog')
-    ],
-    es6mode: true,
-    watch: false
   }
 };
 
@@ -266,7 +228,7 @@ if (!module.parent && process.argv.length > 2 && process.argv[2] === 'server') {
   server.listen(port, host, function (err) {
     if (err) throw err;
     var url = util.format('http://%s:%d', host, port);
-    console.log('Listening at %s', url);
+    console.log('devserver running on %s', url);
     opn(url);
   });
 }

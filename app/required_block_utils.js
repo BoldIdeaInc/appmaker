@@ -1,5 +1,6 @@
 /* global Text */
 
+import Blockly from './blockly';
 import xml from './xml';
 import blockUtils from './block_utils';
 import utils from './utils';

@@ -66,6 +66,8 @@ export default React.createClass({
         if (elementType === library.ElementType.SCREEN) {
           return $(this).clone();
         }
+        // FIXME: need to figure out how to pass Applab as first argument here.
+        debugger;
         var element = library.createElement(elementType, 0, 0, true);
         element.style.position = 'static';
 

@@ -2,6 +2,7 @@
 
 import dropletUtils from './dropletUtils';
 import utils from './utils';
+import ace from 'brace';
 
 /*
  * Note: These are defined to match the state.mode of the interpreter. The
@@ -721,7 +722,7 @@ function highlightAceLines(aceEditor, className, startRow, startColumn, endRow, 
   }
   if (typeof startRow !== 'undefined') {
     lastHighlightMarkerIds[className] = session.addMarker(
-        new (window.ace.require('ace/range').Range)(
+        new (ace.require('ace/range').Range)(
             startRow, startColumn, endRow, endColumn), className, 'text');
     if (!aceEditor.isRowFullyVisible(startRow)) {
       aceEditor.scrollToLine(startRow, true);

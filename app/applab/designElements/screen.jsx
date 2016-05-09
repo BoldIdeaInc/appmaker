@@ -1,9 +1,11 @@
+/* global HTMLElement */
 
+// import Applab from '../main';
 import React from 'react';
 import PropertyRow from './PropertyRow';
 import ColorPickerPropertyRow from './ColorPickerPropertyRow';
 import ImagePickerPropertyRow from './ImagePickerPropertyRow';
-import BooleanPropertyRow from './BooleanPropertyRow';
+// import BooleanPropertyRow from './BooleanPropertyRow';
 import EventHeaderRow from './EventHeaderRow';
 import EventRow from './EventRow';
 import DefaultScreenButtonPropertyRow from './DefaultScreenButtonPropertyRow';
@@ -127,13 +129,13 @@ export default {
   PropertyTab: ScreenProperties,
   EventTab: ScreenEvents,
 
-  create: function () {
+  create: function (app) {
     var element = document.createElement('div');
     element.setAttribute('class', 'screen');
     element.setAttribute('tabIndex', '1');
     element.style.display = 'block';
-    element.style.height = Applab.footerlessAppHeight + 'px';
-    element.style.width = Applab.appWidth + 'px';
+    element.style.height = app.footerlessAppHeight + 'px';
+    element.style.width = app.appWidth + 'px';
     element.style.left = '0px';
     element.style.top = '0px';
     // We want our screen to be behind canvases. By setting any z-index on the

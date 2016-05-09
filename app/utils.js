@@ -4,6 +4,7 @@
 var savedAmd;
 
 import Hammer from './hammer';
+import Blockly from './blockly';
 import _ from 'lodash';
 
 // undo hackery

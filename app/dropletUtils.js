@@ -1,4 +1,5 @@
 import utils from './utils';
+import ace from 'brace';
 import _ from 'lodash';
 
 /**
@@ -429,7 +430,7 @@ function populateCompleterFromPredefValues(apis, predefValues) {
  * @return {boolean} true if position is at the start of a method or property
  */
 function isPositionAfterDot(session, pos) {
-  var acUtil = window.ace.require("ace/autocomplete/util");
+  var acUtil = ace.require("ace/autocomplete/util");
   var line = session.getLine(pos.row);
   var identifier = acUtil.retrievePrecedingIdentifier(line, pos.column);
   // If we're typing a valid identifier, inspect the preceeding

@@ -4,6 +4,7 @@
 import utils from './utils';
 import _ from 'lodash';
 import msg from './locale';
+import Blockly from './blockly';
 
 var ARITHMETIC_TITLE_FONT_SIZE = 25;
 

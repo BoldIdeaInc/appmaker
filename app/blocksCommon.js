@@ -3,6 +3,7 @@
  */
 
 import commonMsg from './locale';
+import Blockly from './blockly';
 
 /**
  * Install extensions to Blockly's language and JavaScript generator

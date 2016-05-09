@@ -1,6 +1,6 @@
 /* global $ */
 
-import elementUtils from './elementUtils';
+import * as elementUtils from './elementUtils';
 
 /**
  * A map from prefix to the next numerical suffix to try to
@@ -93,13 +93,13 @@ export default {
    * @param {number} top Position from top.
    * @param {boolean} [withoutId] If true, don't generate an id
    */
-  createElement: function (elementType, left, top, withoutId) {
+  createElement: function (app, elementType, left, top, withoutId) {
     var elementClass = elements[elementType];
     if (!elementClass) {
       throw new Error('Unknown elementType: ' + elementType);
     }
 
-    var element = elementClass.create(withoutId);
+    var element = elementClass.create(app, withoutId);
 
     // Stuff that's common across all elements
     if (!withoutId) {

@@ -19,9 +19,7 @@ var FeedbackUtils = function (studioApp) {
 };
 export default FeedbackUtils;
 
-// Globals used in this file:
-//   Blockly
-
+import Blockly from './blockly';
 import trophy from './templates/trophy.html.ejs';
 import utils from './utils';
 import codegen from './codegen';

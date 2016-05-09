@@ -27,6 +27,7 @@ import assetListStore from './assetManagement/assetListStore';
 import annotationList from './acemode/annotationList';
 import processMarkdown from 'marked';
 import ResizeSensor from './ResizeSensor';
+import ace from 'brace';
 var copyrightStrings;
 
 /**
@@ -212,6 +213,7 @@ StudioApp.singleton = new StudioApp();
  */
 StudioApp.prototype.configure = function (options) {
   this.BASE_URL = options.baseUrl;
+  this.ASSET_URL = options.assetUrl;
   this.LOCALE = options.locale || this.LOCALE;
   // NOTE: editCode (which currently implies droplet) and usingBlockly_ are
   // currently mutually exclusive.
@@ -224,6 +226,8 @@ StudioApp.prototype.configure = function (options) {
     this.editCode = false;
     this.usingBlockly_ = false;
   }
+
+  console.log('options:', options);
 
   this.cdoSounds = options.cdoSounds;
   this.Dialog = options.Dialog;
@@ -785,11 +789,9 @@ StudioApp.prototype.renderShareFooter_ = function (container) {
  * Get the url of path appended to BASE_URL
  */
 StudioApp.prototype.assetUrl_ = function (path) {
-  if (this.BASE_URL === undefined) {
-    throw new Error('StudioApp BASE_URL has not been set. ' +
-      'Call configure() first');
-  }
-  return this.BASE_URL + path;
+  const assetUrl = this.ASSET_URL.replace(/\/$/, '') + '/';
+  path = path.replace(/^\//, '');
+  return assetUrl + path;
 };
 
 /**
@@ -1860,12 +1862,6 @@ StudioApp.prototype.handleEditCode_ = function (config) {
     return;
   }
 
-  var displayMessage, examplePrograms, messageElement, onChange, startingText;
-
-  // Ensure global ace variable is the same as window.ace
-  // (important because they can be different in our test environment)
-  ace = window.ace;
-
   var fullDropletPalette = dropletUtils.generateDropletPalette(
     config.level.codeFunctions, config.dropletConfig);
   this.editor = new droplet.Editor(document.getElementById('codeTextbox'), {
@@ -1889,7 +1885,7 @@ StudioApp.prototype.handleEditCode_ = function (config) {
   aceEditor.session.setMode('ace/mode/javascript_codeorg');
 
   // Extend the command list on the ace Autocomplete object to include the period:
-  var Autocomplete = window.ace.require("ace/autocomplete").Autocomplete;
+  var Autocomplete = ace.require("ace/autocomplete").Autocomplete;
   Autocomplete.prototype.commands['.'] = function (editor) {
     // First, insert the period and update the completions:
     editor.insert(".");
@@ -1907,7 +1903,7 @@ StudioApp.prototype.handleEditCode_ = function (config) {
     editor.completer.detach();
   };
 
-  var langTools = window.ace.require("ace/ext/language_tools");
+  var langTools = ace.require("ace/ext/language_tools");
 
   // We don't want to include the textCompleter. langTools doesn't give us a way
   // to remove base completers (note: it does in newer versions of ace), so
@@ -1983,7 +1979,7 @@ StudioApp.prototype.handleEditCode_ = function (config) {
     // Reset droplet Undo stack:
     this.editor.clearUndoStack();
     // Reset ace Undo stack:
-    var UndoManager = window.ace.require("ace/undomanager").UndoManager;
+    var UndoManager = ace.require("ace/undomanager").UndoManager;
     this.editor.aceEditor.getSession().setUndoManager(new UndoManager());
   }
 

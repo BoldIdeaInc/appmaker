@@ -1,7 +1,3 @@
-// /home/ben/Projects/applab2/apps/src/color.js
-// GENERATED FILE: DO NOT MODIFY DIRECTLY
-// This generated file exports all variables defined in /home/ben/Projects/applab2/shared/css/color.scss
-// for use in JavaScript. The generator script is convert-scss-variables.js
 export default {
   "black": "black",
   "dark_charcoal": "#4d575f",

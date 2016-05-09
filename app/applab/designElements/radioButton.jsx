@@ -169,7 +169,7 @@ export default {
   PropertyTab: RadioButtonProperties,
   EventTab: RadioButtonEvents,
 
-  create: function (withoutId) {
+  create: function (Applab, withoutId) {
     var element = document.createElement('input');
     element.type = 'radio';
     element.style.width = '12px';

@@ -6,6 +6,7 @@
     object-shorthand: ["error", "never"]
   },
   globals: {
-    goog: true
+    goog: true,
+    Blockly: true
   }
 }

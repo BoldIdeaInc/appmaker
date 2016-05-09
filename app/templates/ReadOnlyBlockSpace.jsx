@@ -5,6 +5,7 @@
   * React render method once we're confident that this component is in
   * the DOM.
   */
+var Blockly = require('../blockly');
 var React = require('react');
 var ReadOnlyBlockSpace = React.createClass({
   propTypes: {

@@ -1,4 +1,5 @@
 import xml from './xml';
+import Blockly from './blockly';
 
 /**
  * Create the xml for a level's toolbox

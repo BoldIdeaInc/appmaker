@@ -179,6 +179,8 @@ window.apps = {
     },
     getLevelSource: function (currentLevelSource) {
       var source;
+      // FIXME(boldidea) Not sure why, but `if (window.blockly)` was used as the condition here.
+      // why does that mean readOnly?
       if (window.Blockly) {
         // If we're readOnly, source hasn't changed at all
         source = Blockly.mainBlockSpace.isReadOnly() ? currentLevelSource :
@@ -187,7 +189,7 @@ window.apps = {
         source = appOptions.getCode();
       }
       return source;
-    },
+    }
   },
 
   // Initialize the Blockly or Droplet app.
