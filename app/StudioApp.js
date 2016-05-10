@@ -1,9 +1,13 @@
+/* global location */
+import $ from 'jquery';
+import React from 'react';
+import ReactDOM from 'react-dom';
 import Blockly from './blockly';
-import aceMode from './acemode/mode-javascript_codeorg';
+import * as aceMode from './acemode/mode-javascript_codeorg';
 import color from './color';
 import {parseElement as parseXmlElement} from './xml';
 import * as utils from './utils';
-import dropletUtils from './dropletUtils';
+import * as dropletUtils from './dropletUtils';
 import _ from 'lodash';
 import * as dom from './dom';
 import constants from './constants.js';
@@ -28,6 +32,10 @@ import annotationList from './acemode/annotationList';
 import processMarkdown from 'marked';
 import ResizeSensor from './ResizeSensor';
 import ace from 'brace';
+import droplet from 'droplet-editor';
+import 'brace/ext/language_tools';
+import 'brace/ext/split';
+
 var copyrightStrings;
 
 /**
@@ -261,6 +269,7 @@ StudioApp.prototype.localeIsEnglish = function () {
  */
 StudioApp.prototype.init = function (config) {
   if (!config) {
+    console.warn('No config given to StudioApp constructor');
     config = {};
   }
 
@@ -268,11 +277,12 @@ StudioApp.prototype.init = function (config) {
   copyrightStrings = config.copyrightStrings;
 
   if (config.isLegacyShare && config.hideSource) {
-    $("body").addClass("legacy-share-view");
+    $('body').addClass('legacy-share-view');
     if (dom.isMobile()) {
       $('#main-logo').hide();
     }
     if (dom.isIOS() && !window.navigator.standalone) {
+      /* global addToHome */
       addToHome.show(true);
     }
   }
@@ -474,17 +484,17 @@ StudioApp.prototype.init = function (config) {
   var hideIcon = utils.valueOr(config.skin.hideIconInClearPuzzle, false);
   var clearPuzzleHeader = document.getElementById('clear-puzzle-header');
   if (clearPuzzleHeader) {
-    dom.addClickTouchEvent(clearPuzzleHeader, (function () {
-      this.feedback_.showClearPuzzleConfirmation(this.Dialog, hideIcon, (function () {
+    dom.addClickTouchEvent(clearPuzzleHeader, function () {
+      this.feedback_.showClearPuzzleConfirmation(this.Dialog, hideIcon, function () {
         this.handleClearPuzzle(config);
-      }).bind(this));
-    }).bind(this));
+      }.bind(this));
+    }.bind(this));
   }
 
   // Bind listener to 'Version History' button
   var versionsHeader = document.getElementById('versions-header');
   if (versionsHeader) {
-    dom.addClickTouchEvent(versionsHeader, (function () {
+    dom.addClickTouchEvent(versionsHeader, function () {
       var codeDiv = document.createElement('div');
       var dialog = this.createModalDialog({
         Dialog: this.Dialog,
@@ -497,7 +507,7 @@ StudioApp.prototype.init = function (config) {
       }), codeDiv);
 
       dialog.show();
-    }).bind(this));
+    }.bind(this));
   }
 
   if (this.isUsingBlockly() && Blockly.contractEditor) {
@@ -561,7 +571,7 @@ StudioApp.prototype.configureAndShowInstructions_ = function (config) {
   if (config.level.aniGifURL) {
     aniGifPreview.style.backgroundImage = "url('" + config.level.aniGifURL + "')";
     var promptTable = document.getElementById('prompt-table');
-    promptTable.className += " with-ani-gif";
+    promptTable.className += ' with-ani-gif';
   } else {
     var wrapper = document.getElementById('ani-gif-preview-wrapper');
     wrapper.style.display = 'none';
@@ -635,7 +645,7 @@ StudioApp.prototype.substituteInstructionImages = function (htmlText, substituti
 
 StudioApp.prototype.getCode = function () {
   if (!this.editCode) {
-    throw "getCode() requires editCode";
+    throw new Error('getCode() requires editCode');
   }
   if (this.hideSource) {
     return this.startBlocks_;
@@ -748,7 +758,7 @@ StudioApp.prototype.renderShareFooter_ = function (container) {
     baseMoreMenuString: window.dashboard.i18n.t('footer.built_on_code_studio'),
     baseStyle: {
       paddingLeft: 0,
-      width: $("#visualization").width()
+      width: $('#visualization').width()
     },
     className: 'dark',
     menuItems: [
@@ -759,7 +769,7 @@ StudioApp.prototype.renderShareFooter_ = function (container) {
       },
       {
         text: window.dashboard.i18n.t('footer.how_it_works'),
-        link: location.href + "/edit",
+        link: location.href + '/edit',
         newWindow: false
       },
       {
@@ -769,12 +779,12 @@ StudioApp.prototype.renderShareFooter_ = function (container) {
       },
       {
         text: window.dashboard.i18n.t('footer.tos'),
-        link: "https://code.org/tos",
+        link: 'https://code.org/tos',
         newWindow: true
       },
       {
         text: window.dashboard.i18n.t('footer.privacy'),
-        link: "https://code.org/privacy",
+        link: 'https://code.org/privacy',
         newWindow: true
       }
     ],
@@ -1885,7 +1895,7 @@ StudioApp.prototype.handleEditCode_ = function (config) {
   aceEditor.session.setMode('ace/mode/javascript_codeorg');
 
   // Extend the command list on the ace Autocomplete object to include the period:
-  var Autocomplete = ace.require("ace/autocomplete").Autocomplete;
+  var Autocomplete = ace.acequire("ace/autocomplete").Autocomplete;
   Autocomplete.prototype.commands['.'] = function (editor) {
     // First, insert the period and update the completions:
     editor.insert(".");
@@ -1903,7 +1913,7 @@ StudioApp.prototype.handleEditCode_ = function (config) {
     editor.completer.detach();
   };
 
-  var langTools = ace.require("ace/ext/language_tools");
+  var langTools = ace.acequire("ace/ext/language_tools");
 
   // We don't want to include the textCompleter. langTools doesn't give us a way
   // to remove base completers (note: it does in newer versions of ace), so
@@ -1979,7 +1989,7 @@ StudioApp.prototype.handleEditCode_ = function (config) {
     // Reset droplet Undo stack:
     this.editor.clearUndoStack();
     // Reset ace Undo stack:
-    var UndoManager = ace.require("ace/undomanager").UndoManager;
+    var UndoManager = ace.acequire("ace/undomanager").UndoManager;
     this.editor.aceEditor.getSession().setUndoManager(new UndoManager());
   }
 

@@ -27,7 +27,7 @@ import * as dom from '../dom';
 // import {parseElement as parseXmlElement} from '../xml';
 import * as utils from '../utils';
 // import dropletUtils from '../dropletUtils';
-import dropletConfig from './dropletConfig';
+import * as dropletConfig from './dropletConfig';
 import AppStorage from './appStorage';
 import * as apiTimeoutList from '../timeoutList';
 import DesignMode from './designMode';
@@ -626,6 +626,7 @@ import visualization from './visualization.html.ejs';
  * Initialize Blockly and the Applab app.  Called on page load.
  */
 Applab.init = function (config) {
+  console.debug('Initializing App Lab with config:', config);
   // Gross, but necessary for tests, until we can instantiate AppLab and make
   // this a member variable: Reset this thing until we're ready to create it!
   jsInterpreterLogger = null;

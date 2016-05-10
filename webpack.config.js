@@ -152,6 +152,10 @@ var loaders = [
   {
     test: /\.ejs$/,
     loader: 'ejs-compiled?htmlmin'
+  },
+  {
+    test: /\.coffee$/,
+    loader: 'coffee-loader'
   }
 ];
 
@@ -196,7 +200,10 @@ var config = {
   ],
   plugins: plugins,
   resolve: {
-    extensions: ['', '.js', '.json', '.jsx']
+    extensions: ['', '.js', '.json', '.jsx', '.coffee'],
+    alias: {
+      'droplet-editor': path.join(__dirname, 'node_modules/droplet-editor/src/main.coffee')
+    }
   },
   node: {
     fs: 'empty',
