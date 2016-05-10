@@ -4,7 +4,7 @@
 import CommandHistory from './CommandHistory';
 import constants from './constants';
 import DebugArea from './DebugArea';
-import dom from './dom';
+import * as dom from './dom';
 import JSInterpreter from './JSInterpreter';
 import Observer from './Observer';
 import Slider from './slider';

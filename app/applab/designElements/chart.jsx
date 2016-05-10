@@ -9,7 +9,7 @@ import ImagePickerPropertyRow from './ImagePickerPropertyRow';
 import ZOrderRow from './ZOrderRow';
 import EventHeaderRow from './EventHeaderRow';
 import EventRow from './EventRow';
-import elementUtils from './elementUtils';
+import * as elementUtils from './elementUtils';
 
 var ChartProperties = React.createClass({
   propTypes: {

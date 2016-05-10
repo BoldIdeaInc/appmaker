@@ -8,7 +8,7 @@ import buttonHtml from './templates/puzzleRating.html.ejs';
 
 export default puzzleRatingUtils;
 
-import dom from './dom';
+import * as dom from './dom';
 
 /**
  * Construct the puzzle rating buttons themselves

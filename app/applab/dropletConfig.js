@@ -4,7 +4,7 @@ import consoleApi from '../consoleApi';
 import showAssetManager from '../assetManagement/show.js';
 import getAssetDropdown from '../assetManagement/getAssetDropdown';
 import ChartApi from './ChartApi';
-import elementUtils from './designElements/elementUtils';
+import * as elementUtils from './designElements/elementUtils';
 import {setPropertyDropdown} from './setPropertyDropdown';
 import applabConstants from './constants';
 

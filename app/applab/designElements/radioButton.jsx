@@ -9,7 +9,7 @@ import ColorPickerPropertyRow from './ColorPickerPropertyRow';
 import ZOrderRow from './ZOrderRow';
 import EventHeaderRow from './EventHeaderRow';
 import EventRow from './EventRow';
-import elementUtils from './elementUtils';
+import * as elementUtils from './elementUtils';
 
 // Prefix used to generate default group ids
 var GROUP_ID_PREFIX = 'radio_group';

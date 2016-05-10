@@ -1,7 +1,7 @@
 import React from 'react';
 import color from '../../color';
 import rowStyle from './rowStyle';
-import elementUtils from './elementUtils';
+import * as elementUtils from './elementUtils';
 
 var DefaultScreenButtonPropertyRow = React.createClass({
   handleMakeDefault: function (event) {

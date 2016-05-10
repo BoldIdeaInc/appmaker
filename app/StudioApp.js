@@ -12,7 +12,7 @@ import _ from 'lodash';
 import * as dom from './dom';
 import constants from './constants.js';
 import msg from './locale';
-import blockUtils from './block_utils';
+import * as blockUtils from './block_utils';
 import DropletTooltipManager from './blockTooltips/DropletTooltipManager';
 import url from 'url';
 import FeedbackUtils from './feedback';

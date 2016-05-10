@@ -6,7 +6,7 @@ import React from 'react';
 import applabMsg from '../locale';
 import color from '../color';
 import elementLibrary from './designElements/library';
-import elementUtils from './designElements/elementUtils';
+import * as elementUtils from './designElements/elementUtils';
 import DeleteElementButton from './designElements/DeleteElementButton';
 import ElementSelect from './ElementSelect';
 

@@ -8,7 +8,7 @@ import React from 'react';
 import color from '../color';
 import constants from './constants';
 import {connect} from 'react-redux';
-import elementUtils from './designElements/elementUtils';
+import * as elementUtils from './designElements/elementUtils';
 
 /**
  * The dropdown that appears above the visualization in design mode, used

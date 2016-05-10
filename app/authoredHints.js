@@ -3,13 +3,14 @@
  * Used exclusively by StudioApp.
  */
 
-import dom from './dom';
+import * as dom from './dom';
 import msg from './locale';
 import HintSelect from './templates/instructions/HintSelect';
 import HintsDisplay from './templates/instructions/HintsDisplay';
 import HintDialogContent from './templates/instructions/HintDialogContent';
 import authoredHintUtils from './authoredHintUtils';
 import Lightbulb from './templates/Lightbulb';
+import ReactDOM from 'react-dom';
 
 var AuthoredHints = function (studioApp) {
   this.studioApp_ = studioApp;

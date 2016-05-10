@@ -1,5 +1,5 @@
 import sanitize from 'sanitize-html';
-import elementUtils from './designElements/elementUtils';
+import * as elementUtils from './designElements/elementUtils';
 
 /**
  * Return any html which is present in 'before' and absent in 'after'.

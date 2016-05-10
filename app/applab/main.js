@@ -37,7 +37,7 @@ import JSInterpreter from '../JSInterpreter';
 import JsInterpreterLogger from '../JsInterpreterLogger';
 import JsDebuggerUi from '../JsDebuggerUi';
 // import elementLibrary from './designElements/library';
-import elementUtils from './designElements/elementUtils';
+import * as elementUtils from './designElements/elementUtils';
 import VisualizationOverlay from './VisualizationOverlay';
 import ShareWarningsDialog from '../templates/ShareWarningsDialog';
 import logToCloud from '../logToCloud';

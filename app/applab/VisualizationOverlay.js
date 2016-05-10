@@ -7,7 +7,7 @@
 import constants from '../constants';
 import CrosshairOverlay from './CrosshairOverlay';
 import gridUtils from './gridUtils';
-import elementUtils from './designElements/elementUtils';
+import * as elementUtils from './designElements/elementUtils';
 var SVG_NS = constants.SVG_NS;
 
 /**

@@ -2,6 +2,7 @@
 
 var AbuseExclamation = require('../components/abuse_exclamation');
 var showProjectAdmin = require('../showProjectAdmin');
+var ReactDOM = require('react-dom');
 
 /**
  * Renders our AbuseExclamation component, and potentially updates admin box

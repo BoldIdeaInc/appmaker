@@ -24,7 +24,7 @@
 'use strict';
 import {SVG_NS} from './constants';
 
-import dom from './dom';
+import * as dom from './dom';
 
 /**
  * Object representing a horizontal slider widget.

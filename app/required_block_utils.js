@@ -1,9 +1,9 @@
 /* global Text */
 
 import Blockly from './blockly';
-import xml from './xml';
-import blockUtils from './block_utils';
-import utils from './utils';
+import * as xml from './xml';
+import * as blockUtils from './block_utils';
+import * as utils from './utils';
 import msg from './locale';
 import _ from 'lodash';
 

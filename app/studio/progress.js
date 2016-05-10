@@ -5,6 +5,7 @@ var StageProgress = require('./components/progress/stage_progress');
 var CourseProgress = require('./components/progress/course_progress');
 
 var progress = module.exports;
+var ReactDOM = require('react-dom');
 
 /**
  * See ApplicationHelper#activity_css_class.

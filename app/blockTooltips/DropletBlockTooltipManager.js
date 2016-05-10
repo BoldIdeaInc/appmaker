@@ -1,6 +1,8 @@
-import DropletFunctionTooltip from './DropletFunctionTooltip';
+// import DropletFunctionTooltip from './DropletFunctionTooltip';
 import DropletFunctionTooltipMarkup from './DropletFunctionTooltip.html.ejs';
-import dom from '../dom';
+import $ from 'jquery';
+import 'jquery-tooltipster/js/jquery.tooltipster';
+import * as dom from '../dom';
 
 /**
  * @fileoverview Displays tooltips for Droplet blocks
@@ -39,7 +41,7 @@ function swallowErrors(fn) {
     try {
       fn();
     } catch (err) {
-      if (typeof(console) !== "undefined" && console.error) {
+      if (typeof console !== 'undefined' && console.error) {
         console.error(err);
       }
     }

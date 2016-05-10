@@ -15,7 +15,7 @@ import EventRow from './EventRow';
 import EnumPropertyRow from './EnumPropertyRow';
 import color from '../../color';
 import {ICON_PREFIX_REGEX} from '../constants';
-import elementUtils from './elementUtils';
+import * as elementUtils from './elementUtils';
 
 var ButtonProperties = React.createClass({
   propTypes: {

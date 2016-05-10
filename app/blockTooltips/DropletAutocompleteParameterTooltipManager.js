@@ -1,7 +1,7 @@
 /* global ace */
 import DropletFunctionTooltipMarkup from './DropletParameterTooltip.html.ejs';
 import tooltipUtils from './tooltipUtils.js';
-import dom from '../dom';
+import * as dom from '../dom';
 import dropletUtils from '../dropletUtils';
 
 /**

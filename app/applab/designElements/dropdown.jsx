@@ -12,7 +12,7 @@ import EventHeaderRow from './EventHeaderRow';
 import EventRow from './EventRow';
 import color from '../../color';
 import EnumPropertyRow from './EnumPropertyRow';
-import elementUtils from './elementUtils';
+import * as elementUtils from './elementUtils';
 
 var DropdownProperties = React.createClass({
   propTypes: {

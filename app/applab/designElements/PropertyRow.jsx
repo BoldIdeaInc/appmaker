@@ -3,7 +3,7 @@
 import React from 'react';
 import color from '../../color';
 import rowStyle from './rowStyle';
-import elementUtils from './elementUtils';
+import * as elementUtils from './elementUtils';
 import utils from '../../utils';
 
 var LockState = {

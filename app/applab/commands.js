@@ -8,7 +8,7 @@ import codegen from '../codegen';
 import sanitizeHtml from './sanitizeHtml';
 import utils from '../utils';
 import elementLibrary from './designElements/library';
-import elementUtils from './designElements/elementUtils';
+import * as elementUtils from './designElements/elementUtils';
 import setPropertyDropdown from './setPropertyDropdown';
 import assetPrefix from '../assetManagement/assetPrefix';
 import errorHandler from '../errorHandler';

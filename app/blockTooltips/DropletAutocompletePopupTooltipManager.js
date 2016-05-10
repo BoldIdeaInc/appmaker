@@ -1,5 +1,5 @@
 import DropletFunctionTooltipMarkup from './DropletFunctionTooltip.html.ejs';
-import dom from '../dom';
+import * as dom from '../dom';
 
 /**
  * @fileoverview Displays tooltips for Droplet blocks

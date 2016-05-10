@@ -5,6 +5,7 @@
  */
 
 var React = require('react');
+var ReactDOM = require('react-dom');
 var BeeCell = require('../../maze/beeCell');
 var tiles = require('../../maze/tiles');
 var SquareType = tiles.SquareType;

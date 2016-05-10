@@ -1,6 +1,7 @@
+import $ from 'jquery';
 import i18n from './locale';
-import dom from './dom';
-import utils from './utils';
+import * as dom from './dom';
+import * as utils from './utils';
 
 /**
  * Creates the debug area controller and configures it to operate on the given
@@ -12,7 +13,7 @@ import utils from './utils';
  */
 var DebugArea = function (debugAreaRoot, codeTextboxRoot) {
   if (!debugAreaRoot || !codeTextboxRoot) {
-    throw new Error("debugAreaRoot and codeTextboxRoot are required");
+    throw new Error('debugAreaRoot and codeTextboxRoot are required');
   }
 
   /**

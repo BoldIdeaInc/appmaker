@@ -7,6 +7,7 @@
  */
 
 var React = require('react');
+var ReactDOM = require('react-dom');
 var INPUT_WIDTH = 500;
 // dropdown width is wider so that it still lines up with inputs (which have
 // padding)

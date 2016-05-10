@@ -2,7 +2,7 @@ import DropletFunctionTooltip from './DropletFunctionTooltip';
 import DropletBlockTooltipManager from './DropletBlockTooltipManager';
 import DropletAutocompletePopupTooltipManager from './DropletAutocompletePopupTooltipManager';
 import DropletAutocompleteParameterTooltipManager from './DropletAutocompleteParameterTooltipManager';
-import dropletUtils from '../dropletUtils';
+import * as dropletUtils from '../dropletUtils';
 
 /**
  * @fileoverview Manages a store of known blocks and tooltips

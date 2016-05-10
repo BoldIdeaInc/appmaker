@@ -11,7 +11,7 @@ import ZOrderRow from './ZOrderRow';
 import EventHeaderRow from './EventHeaderRow';
 import EventRow from './EventRow';
 import {ICON_PREFIX_REGEX} from '../constants';
-import elementUtils from './elementUtils';
+import * as elementUtils from './elementUtils';
 
 var ImageProperties = React.createClass({
   propTypes: {

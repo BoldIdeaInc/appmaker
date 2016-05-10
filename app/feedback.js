@@ -24,8 +24,8 @@ import trophy from './templates/trophy.html.ejs';
 import utils from './utils';
 import codegen from './codegen';
 import msg from './locale';
-import dom from './dom';
-import xml from './xml';
+import * as dom from './dom';
+import * as xml from './xml';
 import FeedbackBlocks from './feedbackBlocks';
 import constants from './constants';
 var TestResults = constants.TestResults;
@@ -34,6 +34,7 @@ import puzzleRatingUtils from './puzzleRatingUtils';
 import DialogButtons from './templates/DialogButtons';
 import CodeWritten from './templates/feedback/CodeWritten';
 import GeneratedCode from './templates/feedback/GeneratedCode';
+import ReactDOM from 'react-dom';
 
 /**
  * @typedef {Object} TestableBlock

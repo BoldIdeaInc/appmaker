@@ -1,6 +1,7 @@
 /* globals dashboard */
 
 var IconLibrary = require('../components/IconLibrary');
+var ReactDOM = require('react-dom');
 
 $(window).load(function () {
   $('#toggleIconLibrary').click(function () {

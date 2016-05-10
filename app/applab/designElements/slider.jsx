@@ -10,7 +10,7 @@ import BooleanPropertyRow from './BooleanPropertyRow';
 import ZOrderRow from './ZOrderRow';
 import EventHeaderRow from './EventHeaderRow';
 import EventRow from './EventRow';
-import elementUtils from './elementUtils';
+import * as elementUtils from './elementUtils';
 
 var SliderProperties = React.createClass({
   propTypes: {

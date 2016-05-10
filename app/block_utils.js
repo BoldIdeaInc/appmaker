@@ -1,4 +1,4 @@
-import xml from './xml';
+import * as xml from './xml';
 import Blockly from './blockly';
 
 /**

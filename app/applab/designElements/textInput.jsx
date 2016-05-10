@@ -12,7 +12,7 @@ import ZOrderRow from './ZOrderRow';
 import EventHeaderRow from './EventHeaderRow';
 import EventRow from './EventRow';
 import EnumPropertyRow from './EnumPropertyRow';
-import elementUtils from './elementUtils';
+import * as elementUtils from './elementUtils';
 
 var TextInputProperties = React.createClass({
   propTypes: {

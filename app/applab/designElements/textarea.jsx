@@ -10,7 +10,7 @@ import ZOrderRow from './ZOrderRow';
 import EventHeaderRow from './EventHeaderRow';
 import EventRow from './EventRow';
 import utils from '../../utils';
-import elementUtils from './elementUtils';
+import * as elementUtils from './elementUtils';
 import EnumPropertyRow from './EnumPropertyRow';
 
 var TextAreaProperties = React.createClass({

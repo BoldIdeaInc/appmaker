@@ -5,6 +5,7 @@
  */
 /* global React */
 var React = require('react');
+var ReactDOM = require('react-dom');
 var tiles = require('../../maze/tiles');
 var SquareType = tiles.SquareType;
 
