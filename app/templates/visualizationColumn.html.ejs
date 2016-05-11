@@ -1,17 +1,18 @@
 <%
 var msg = require('../locale');
 var hideRunButton = locals.hideRunButton || false;
+var pixelImg = require('../media/1x1.gif');
 %>
 
 <% var gameButtons = function() { -%>
 <div id="gameButtons">
   <button id="runButton" class="launch blocklyLaunch <%= hideRunButton ? 'invisible' : ''%>">
     <div><%= msg.runProgram() %></div>
-    <img src="<%= assetUrl('media/1x1.gif') %>" class="run26"/>
+    <img src="<%= pixelImg %>" class="run26"/>
   </button>
   <button id="resetButton" class="launch blocklyLaunch" style="display: none">
     <div><%= msg.resetProgram() %></div>
-    <img src="<%= assetUrl('media/1x1.gif') %>" class="reset26"/>
+    <img src="<%= pixelImg %>" class="reset26"/>
   </button>
   <% if (data.controls) { %>
     <%- data.controls %>

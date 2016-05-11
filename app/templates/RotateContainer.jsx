@@ -2,6 +2,7 @@
 
 var React = require('react');
 var msg = require('../locale');
+var turnphoneHorzontalImg = require('../media/turnphone_horizontal.png');
 
 /**
  * "Rotate your device" overlay.
@@ -13,8 +14,8 @@ var RotateContainer = React.createClass({
 
   render: function () {
     return (
-      <div id="rotateContainer" style={this.getStyle()}>
-        <div id="rotateText">
+      <div id='rotateContainer' style={this.getStyle()}>
+        <div id='rotateText'>
           <p>{msg.rotateText()}<br />{msg.orientationLock()}</p>
         </div>
       </div>
@@ -23,7 +24,7 @@ var RotateContainer = React.createClass({
 
   getStyle: function () {
     return {
-      backgroundImage: 'url(' + this.props.assetUrl('media/turnphone_horizontal.png') + ')'
+      backgroundImage: 'url(' + turnphoneHorzontalImg + ')'
     };
   }
 });

@@ -1,27 +1,28 @@
 <%
   var msg = require('../locale');
+  var pixelImg = require('../media/1x1.gif');
 %>
 <% // Comment so this file is not identical to studio/controls.html.ejs %>
 
 <div id="soft-buttons" class="soft-buttons-none">
   <button id="leftButton" disabled=true class="arrow">
-    <img src="<%= assetUrl('media/1x1.gif') %>" class="left-btn icon21">
+    <img src="<%= pixelImg %>" class="left-btn icon21">
   </button>
   <button id="rightButton" disabled=true class="arrow">
-    <img src="<%= assetUrl('media/1x1.gif') %>" class="right-btn icon21">
+    <img src="<%= pixelImg %>" class="right-btn icon21">
   </button>
   <button id="upButton" disabled=true class="arrow">
-    <img src="<%= assetUrl('media/1x1.gif') %>" class="up-btn icon21">
+    <img src="<%= pixelImg %>" class="up-btn icon21">
   </button>
   <button id="downButton" disabled=true class="arrow">
-    <img src="<%= assetUrl('media/1x1.gif') %>" class="down-btn icon21">
+    <img src="<%= pixelImg %>" class="down-btn icon21">
   </button>
 </div>
 
 <% if (finishButton) { %>
   <div id="share-cell" class="share-cell-none">
     <button id="finishButton" class="share">
-      <img src="<%= assetUrl('media/1x1.gif') %>"><%= msg.finish() %>
+      <img src="<%= pixelImg %>"><%= msg.finish() %>
     </button>
   </div>
 <% } %>
@@ -29,7 +30,7 @@
 <% if (submitButton) { %>
   <div id="share-cell" class="share-cell-none">
     <button id="submitButton" class="share">
-      <img src="<%= assetUrl('media/1x1.gif') %>"><%= msg.submit() %>
+      <img src="<%= pixelImg %>"><%= msg.submit() %>
     </button>
   </div>
 <% } %>
@@ -37,7 +38,7 @@
 <% if (unsubmitButton) { %>
   <div id="share-cell" class="share-cell-enabled">
     <button id="unsubmitButton" class="share">
-      <img src="<%= assetUrl('media/1x1.gif') %>"><%= msg.unsubmit() %>
+      <img src="<%= pixelImg %>"><%= msg.unsubmit() %>
     </button>
   </div>
 <% } %>

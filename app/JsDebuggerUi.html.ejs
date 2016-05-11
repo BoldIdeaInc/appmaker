@@ -1,4 +1,5 @@
 <% var i18n = require('./locale'); %>
+<% var pixelImg = require('./media/1x1.gif'); %>
 
 <div id="debug-area">
   <div id="debugResizeBar" class="fa fa-ellipsis-h"></div>
@@ -46,23 +47,23 @@
   <div id="debug-commands" class="debug-commands">
     <div id="debug-buttons">
       <button id="pauseButton" class="debugger_button">
-        <img src="<%= assetUrl('media/1x1.gif') %>" class="pause-btn icon21">
+        <img src="<%= pixelImg %>" class="pause-btn icon21">
         <%= i18n.pause() %>
       </button>
       <button id="continueButton" class="debugger_button">
-        <img src="<%= assetUrl('media/1x1.gif') %>" class="continue-btn icon21">
+        <img src="<%= pixelImg %>" class="continue-btn icon21">
         <%= i18n.continue() %>
       </button>
       <button id="stepOverButton" class="debugger_button">
-        <img src="<%= assetUrl('media/1x1.gif') %>" class="step-over-btn icon21">
+        <img src="<%= pixelImg %>" class="step-over-btn icon21">
         <%= i18n.stepOver() %>
       </button>
       <button id="stepOutButton" class="debugger_button">
-        <img src="<%= assetUrl('media/1x1.gif') %>" class="step-out-btn icon21">
+        <img src="<%= pixelImg %>" class="step-out-btn icon21">
         <%= i18n.stepOut() %>
       </button>
       <button id="stepInButton" class="debugger_button">
-        <img src="<%= assetUrl('media/1x1.gif') %>" class="step-in-btn icon21">
+        <img src="<%= pixelImg %>" class="step-in-btn icon21">
         <%= i18n.stepIn() %>
       </button>
     </div>

@@ -52,7 +52,7 @@ var setInitialLevelProps = actions.setInitialLevelProps;
 var changeInterfaceMode = actions.changeInterfaceMode;
 // var setInstructionsInTopPane = actions.setInstructionsInTopPane;
 
-import applabConstants from './constants';
+import * as applabConstants from './constants';
 import consoleApi from '../consoleApi';
 // import BoardController from '../makerlab/BoardController';
 

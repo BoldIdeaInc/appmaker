@@ -1,6 +1,4 @@
-/* global $ */
-
-/* global $ */
+/* global $, HTMLElement */
 
 import PropertyRow from './PropertyRow';
 import React from 'react';
@@ -12,6 +10,7 @@ import EventHeaderRow from './EventHeaderRow';
 import EventRow from './EventRow';
 import {ICON_PREFIX_REGEX} from '../constants';
 import * as elementUtils from './elementUtils';
+import pixelImg from '../../media/1x1.gif';
 
 var ImageProperties = React.createClass({
   propTypes: {
@@ -140,7 +139,7 @@ export default {
     var element = document.createElement('img');
     element.style.height = '100px';
     element.style.width = '100px';
-    element.setAttribute('src', '/blockly/media/1x1.gif');
+    element.setAttribute('src', pixelImg);
     element.setAttribute('data-canonical-image-url', '');
 
     return element;
@@ -150,7 +149,7 @@ export default {
     if (url) {
       updateProperty(element, 'picture', url);
     } else {
-      element.setAttribute('src', '/blockly/media/1x1.gif');
+      element.setAttribute('src', pixelImg);
       element.setAttribute('data-canonical-image-url', '');
     }
   }

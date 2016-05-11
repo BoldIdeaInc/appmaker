@@ -1,9 +1,6 @@
 /** @file Creates and controls an SVG overlay on the app visualization. */
-/** @file Creates and controls an SVG overlay on the app visualization. */
-/** @file Creates and controls an SVG overlay on the app visualization. */
-/** @file Creates and controls an SVG overlay on the app visualization. */
-'use strict';
 
+import $ from 'jquery';
 import constants from '../constants';
 import CrosshairOverlay from './CrosshairOverlay';
 import gridUtils from './gridUtils';

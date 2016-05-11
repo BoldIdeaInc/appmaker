@@ -7,6 +7,8 @@ var ABSOLUTE_REGEXP = new RegExp('^https?://', 'i');
 var assetPathPrefix = "/v3/assets/";
 var channelId;
 
+var pixelImg = require('../media/1x1.gif');
+
 module.exports.init = function (config) {
   if (config.assetPathPrefix) {
     assetPathPrefix = config.assetPathPrefix;
@@ -38,7 +40,7 @@ module.exports.fixPath = function (filename) {
 
   filename = filename || '';
   if (filename.length === 0) {
-    return '/blockly/media/1x1.gif';
+    return pixelImg;
   }
 
   if (filename.indexOf('/') !== -1 || !channelId) {

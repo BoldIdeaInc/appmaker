@@ -7,6 +7,7 @@ import ChartApi from './ChartApi';
 import * as elementUtils from './designElements/elementUtils';
 import {setPropertyDropdown} from './setPropertyDropdown';
 import applabConstants from './constants';
+import exampleMp3 from '../media/example.mp3';
 
 var DEFAULT_WIDTH = "320";
 var DEFAULT_HEIGHT = (480 - applabConstants.FOOTER_HEIGHT).toString();
@@ -74,7 +75,7 @@ export let blocks = [
   {func: 'image', parent: api, category: 'UI controls', paletteParams: ['id','url'], params: ['"id"', '"https://code.org/images/logo.png"'], dropdown: { 1: function () { return getAssetDropdown('image'); } }, 'assetTooltip': { 1: chooseAsset.bind(null, 'image') } },
   {func: 'getImageURL', parent: api, category: 'UI controls', paletteParams: ['id'], params: ['"id"'], dropdown: { 0: idDropdownWithSelector("img") }, type: 'value' },
   {func: 'setImageURL', parent: api, category: 'UI controls', paletteParams: ['id','url'], params: ['"id"', '"https://code.org/images/logo.png"'], dropdown: { 0: idDropdownWithSelector("img"), 1: function () { return getAssetDropdown('image'); } }, 'assetTooltip': { 1: chooseAsset.bind(null, 'image') } },
-  {func: 'playSound', parent: api, category: 'UI controls', paletteParams: ['url'], params: ['"https://studio.code.org/blockly/media/example.mp3"'], dropdown: { 0: function () { return getAssetDropdown('audio'); } }, 'assetTooltip': { 0: chooseAsset.bind(null, 'audio') } },
+  {func: 'playSound', parent: api, category: 'UI controls', paletteParams: ['url'], params: ['"' + exampleMp3 + '"'], dropdown: { 0: function () { return getAssetDropdown('audio'); } }, 'assetTooltip': { 0: chooseAsset.bind(null, 'audio') } },
   {func: 'showElement', parent: api, category: 'UI controls', paletteParams: ['id'], params: ['"id"'], dropdown: ID_DROPDOWN_PARAM_0 },
   {func: 'hideElement', parent: api, category: 'UI controls', paletteParams: ['id'], params: ['"id"'], dropdown: ID_DROPDOWN_PARAM_0 },
   {func: 'deleteElement', parent: api, category: 'UI controls', paletteParams: ['id'], params: ['"id"'], dropdown: ID_DROPDOWN_PARAM_0 },

@@ -2,6 +2,7 @@
 
 /* global $ */
 
+import 'jquery-ui'
 import React from 'react';
 import ReactDOM from 'react-dom';
 import library from './designElements/library';

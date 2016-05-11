@@ -3,9 +3,8 @@
 // TODO (brent) - make it so that we dont need to specify .jsx. This currently
 // works in our grunt build, but not in tests
 
-// TODO (brent) - make it so that we dont need to specify .jsx. This currently
-// works in our grunt build, but not in tests
 // import Applab from './main';
+import 'jquery-ui';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import DesignWorkspace from './DesignWorkspace';
@@ -21,6 +20,7 @@ import utils from '../utils';
 import gridUtils from './gridUtils';
 import logToCloud from '../logToCloud';
 import * as actions from './actions';
+import pixelImg from '../media/1x1.gif';
 
 var ICON_PREFIX = applabConstants.ICON_PREFIX;
 var ICON_PREFIX_REGEX = applabConstants.ICON_PREFIX_REGEX;
@@ -342,7 +342,7 @@ export default function (Applab) {
             }
           };
           if (value === '') {
-            element.src = '/blockly/media/1x1.gif';
+            element.src = pixelImg;
             resizeElement(100, 100);
           } else {
             element.onload = function () {

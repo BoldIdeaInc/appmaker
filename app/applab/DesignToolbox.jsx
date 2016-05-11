@@ -1,12 +1,19 @@
-/* global $ */
-
-/* global $ */
-
 import React from 'react';
 import DesignToolboxElement from './DesignToolboxElement';
 import applabMsg from '../locale';
 
-var IMAGE_BASE_URL = '/blockly/media/applab/design_toolbox/';
+import buttonImg from '../media/applab/design_toolbox/button.png';
+import inputImg from '../media/applab/design_toolbox/input.png';
+import labelImg from '../media/applab/design_toolbox/label.png';
+import dropdownImg from '../media/applab/design_toolbox/dropdown.png';
+import radioImg from '../media/applab/design_toolbox/radio.png';
+import checkboxImg from '../media/applab/design_toolbox/checkbox.png';
+import imageImg from '../media/applab/design_toolbox/image.png';
+import canvasImg from '../media/applab/design_toolbox/canvas.png';
+import screenImg from '../media/applab/design_toolbox/screen.png';
+import textareaImg from '../media/applab/design_toolbox/textarea.png';
+import chartImg from '../media/applab/design_toolbox/chart.png';
+import sliderImg from '../media/applab/design_toolbox/slider.png';
 
 export default React.createClass({
   propTypes: {
@@ -17,78 +24,78 @@ export default React.createClass({
   render: function () {
     var toolboxStyle = {
       display: this.props.isToolboxVisible ? 'block' : 'none',
-        position: 'absolute',
-        top: 0,
-        bottom: 0,
-        width: 270,
-        boxSizing: 'border-box',
-        borderRight: '1px solid gray',
-        padding: 10
+      position: 'absolute',
+      top: 0,
+      bottom: 0,
+      width: 270,
+      boxSizing: 'border-box',
+      borderRight: '1px solid gray',
+      padding: 10
     };
 
     return (
-      <div id="design-toolbox" style={toolboxStyle}>
+      <div id='design-toolbox' style={toolboxStyle}>
         <p>{applabMsg.designToolboxDescription()}</p>
         <DesignToolboxElement
-            imageUrl={IMAGE_BASE_URL + 'button.png'}
-            desc={'Button'}
-            elementType={'BUTTON'}
-            handleDragStart={this.props.handleDragStart} />
+          imageUrl={buttonImg}
+          desc={'Button'}
+          elementType={'BUTTON'}
+          handleDragStart={this.props.handleDragStart} />
         <DesignToolboxElement
-            imageUrl={IMAGE_BASE_URL + 'input.png'}
-            desc={'Text Input'}
-            elementType={'TEXT_INPUT'}
-            handleDragStart={this.props.handleDragStart} />
+          imageUrl={inputImg}
+          desc={'Text Input'}
+          elementType={'TEXT_INPUT'}
+          handleDragStart={this.props.handleDragStart} />
         <DesignToolboxElement
-            imageUrl={IMAGE_BASE_URL + 'label.png'}
-            desc={'Label'}
-            elementType={'LABEL'}
-            handleDragStart={this.props.handleDragStart} />
+          imageUrl={labelImg}
+          desc={'Label'}
+          elementType={'LABEL'}
+          handleDragStart={this.props.handleDragStart} />
         <DesignToolboxElement
-            imageUrl={IMAGE_BASE_URL + 'dropdown.png'}
-            desc={'Dropdown'}
-            elementType={'DROPDOWN'}
-            handleDragStart={this.props.handleDragStart} />
+          imageUrl={dropdownImg}
+          desc={'Dropdown'}
+          elementType={'DROPDOWN'}
+          handleDragStart={this.props.handleDragStart} />
         <DesignToolboxElement
-            imageUrl={IMAGE_BASE_URL + 'radio.png'}
-            desc={'Radio Button'}
-            elementType={'RADIO_BUTTON'}
-            handleDragStart={this.props.handleDragStart} />
+          imageUrl={radioImg}
+          desc={'Radio Button'}
+          elementType={'RADIO_BUTTON'}
+          handleDragStart={this.props.handleDragStart} />
         <DesignToolboxElement
-            imageUrl={IMAGE_BASE_URL + 'checkbox.png'}
-            desc={'Checkbox'}
-            elementType={'CHECKBOX'}
-            handleDragStart={this.props.handleDragStart} />
+          imageUrl={checkboxImg}
+          desc={'Checkbox'}
+          elementType={'CHECKBOX'}
+          handleDragStart={this.props.handleDragStart} />
         <DesignToolboxElement
-            imageUrl={IMAGE_BASE_URL + 'image.png'}
-            desc={'Image'}
-            elementType={'IMAGE'}
-            handleDragStart={this.props.handleDragStart} />
+          imageUrl={imageImg}
+          desc={'Image'}
+          elementType={'IMAGE'}
+          handleDragStart={this.props.handleDragStart} />
         <DesignToolboxElement
-            imageUrl={IMAGE_BASE_URL + 'canvas.png'}
-            desc={'Canvas'}
-            elementType={'CANVAS'}
-            handleDragStart={this.props.handleDragStart} />
+          imageUrl={canvasImg}
+          desc={'Canvas'}
+          elementType={'CANVAS'}
+          handleDragStart={this.props.handleDragStart} />
         <DesignToolboxElement
-            imageUrl={IMAGE_BASE_URL + 'screen.png'}
-            desc={'Screen'}
-            elementType={'SCREEN'}
-            handleDragStart={this.props.handleDragStart} />
+          imageUrl={screenImg}
+          desc={'Screen'}
+          elementType={'SCREEN'}
+          handleDragStart={this.props.handleDragStart} />
         <DesignToolboxElement
-            imageUrl={IMAGE_BASE_URL + 'textarea.png'}
-            desc={'Text Area'}
-            elementType={'TEXT_AREA'}
-            handleDragStart={this.props.handleDragStart} />
+          imageUrl={textareaImg}
+          desc={'Text Area'}
+          elementType={'TEXT_AREA'}
+          handleDragStart={this.props.handleDragStart} />
         <DesignToolboxElement
-            imageUrl={IMAGE_BASE_URL + 'chart.png'}
-            desc={'Chart'}
-            elementType={'CHART'}
-            handleDragStart={this.props.handleDragStart} />
+          imageUrl={chartImg}
+          desc={'Chart'}
+          elementType={'CHART'}
+          handleDragStart={this.props.handleDragStart} />
         <DesignToolboxElement
-            imageUrl={IMAGE_BASE_URL + 'slider.png'}
-            desc={'Slider'}
-            elementType={'SLIDER'}
-            handleDragStart={this.props.handleDragStart} />
+          imageUrl={sliderImg}
+          desc={'Slider'}
+          elementType={'SLIDER'}
+          handleDragStart={this.props.handleDragStart} />
       </div>
     );
   }
