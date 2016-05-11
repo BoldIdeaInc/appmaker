@@ -52,14 +52,15 @@ var setInitialLevelProps = actions.setInitialLevelProps;
 var changeInterfaceMode = actions.changeInterfaceMode;
 // var setInstructionsInTopPane = actions.setInstructionsInTopPane;
 
-import * as applabConstants from './constants';
+import applabConstants from './constants';
+import appConstants from '../constants';
 import consoleApi from '../consoleApi';
 // import BoardController from '../makerlab/BoardController';
 
 var ResultType = studioApp.ResultType;
 var TestResults = studioApp.TestResults;
 var ApplabInterfaceMode = applabConstants.ApplabInterfaceMode;
-var KeyCodes = applabConstants.KeyCodes;
+var KeyCodes = appConstants.KeyCodes;
 
 /**
  * Create a namespace for the application.
