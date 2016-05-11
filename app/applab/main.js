@@ -53,7 +53,7 @@ var changeInterfaceMode = actions.changeInterfaceMode;
 // var setInstructionsInTopPane = actions.setInstructionsInTopPane;
 
 import applabConstants from './constants';
-import appConstants from '../constants';
+import * as appConstants from '../constants';
 import consoleApi from '../consoleApi';
 // import BoardController from '../makerlab/BoardController';
 
