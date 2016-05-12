@@ -1,9 +1,9 @@
 @import "../color";
 @import "../mixins";
 @import "../style-constants";
-@import "../JsDebuggerUi.scss";
-@import "skins/base.scss";
-@import "skins/modern.scss";
+@import "../JsDebuggerUi";
+@import "skins/base";
+@import "skins/modern";
 
 $root: '/blockly/media/applab/'; //TODO: Parameterize for asset pipeline
 
