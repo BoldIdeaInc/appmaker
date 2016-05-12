@@ -1,10 +1,7 @@
 /** @file Creates and controls a coordinates crosshair on the app visualization. */
-/** @file Creates and controls a coordinates crosshair on the app visualization. */
-/** @file Creates and controls a coordinates crosshair on the app visualization. */
-/** @file Creates and controls a coordinates crosshair on the app visualization. */
-'use strict';
 
 import constants from '../constants';
+import $ from 'jquery';
 var SVG_NS = constants.SVG_NS;
 
 var CROSSHAIR_MARGIN = 6;
@@ -114,12 +111,12 @@ CrosshairOverlay.prototype.render = function (intoElement, nextProps) {
     this.elementIdText_.setAttribute('y', elementIdTextY);
     this.elementIdText_.textContent = this.getElementIdText_();
 
-    this.elementIdBubble_.style.display = 'block';
-    this.elementIdText_.style.display = 'block';
+    $(this.elementIdBubble_).show();
+    $(this.elementIdText_).show();
   } else {
     // Otherwise, hide the element id tooltip
-    this.elementIdBubble_.style.display = 'none';
-    this.elementIdText_.style.display = 'none';
+    $(this.elementIdBubble_).show();
+    $(this.elementIdText_).show();
   }
 };
 

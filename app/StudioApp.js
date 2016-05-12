@@ -33,6 +33,9 @@ import processMarkdown from 'marked';
 import ResizeSensor from './ResizeSensor';
 import ace from 'brace';
 import droplet from 'droplet-editor';
+import 'droplet-editor/../../css/droplet.css';
+import 'brace/theme/chrome';
+import 'brace/mode/javascript';
 import 'brace/ext/language_tools';
 import 'brace/ext/split';
 

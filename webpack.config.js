@@ -81,9 +81,8 @@ var jsonLoader = ['json'];
 
 var sassParams = [
   'outputStyle=expanded',
-  'includePaths[]=' + path.resolve(__dirname, '../app/scss'),
-  'includePaths[]=' + path.resolve(__dirname, '../app/scss/cdo'),
-  'includePaths[]=' + path.resolve(__dirname, '../node_modules')
+  'includePaths[]=' + path.join(__dirname, 'app/scss'),
+  'includePaths[]=' + path.join(__dirname, 'node_modules')
 ];
 
 if (DEBUG || TEST) {
@@ -95,7 +94,7 @@ if (DEBUG || TEST) {
   sassParams.push('sourceMap', 'sourceMapContents=true');
   cssLoader = [
     'style',
-    'css?sourceMap&modules&localIdentName=[name]__[local]___[hash:base64:5]',
+    'css?sourceMap&modules&localIdentName=[local]',
     'postcss'
   ].join('!');
   sassLoader = [
@@ -155,6 +154,10 @@ var loaders = [
   {
     test: /\.coffee$/,
     loader: 'coffee'
+  },
+  {
+    test: /quadtree.js$/,
+    loader: 'exports-loader?QUAD.init!droplet-editor/vendor/quadtree.js'
   }
 ];
 
@@ -195,7 +198,7 @@ var config = {
     loaders: loaders
   },
   postcss: [
-    autoprefixer
+    //autoprefixer
   ],
   plugins: plugins,
   resolve: {
