@@ -1,7 +1,6 @@
 var path = require('path');
 var util = require('util');
 var opn = require('opn');
-var autoprefixer = require('autoprefixer-core');
 var webpack = require('webpack');
 var WebpackDevServer = require('webpack-dev-server');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
@@ -68,8 +67,8 @@ var jsxLoader;
 var sassLoader;
 var cssLoader;
 var htmlLoader = [
-  'file?name=[path][name].[ext]',
-  'template-html?' + [
+  'file-loader?name=[path][name].[ext]',
+  'template-html-loader?' + [
     'raw=true',
     'engine=lodash',
     'version=' + pkg.version,
@@ -90,40 +89,55 @@ if (DEBUG || TEST) {
   if (!TEST) {
     // jsxLoader.push('react-hot');
   }
-  jsxLoader.push('babel?optional[]=runtime&stage=0&plugins=rewire');
+  jsxLoader.push('babel-loader?optional[]=runtime&stage=0&plugins=rewire');
   sassParams.push('sourceMap', 'sourceMapContents=true');
   cssLoader = [
-    'style',
-    'css?sourceMap&modules&localIdentName=[local]',
-    'postcss'
+    'style-loader',
+    'css-loader?sourceMap&modules&localIdentName=[local]',
+    'postcss-loader'
   ].join('!');
   sassLoader = [
     cssLoader,
-    'sass?' + sassParams.join('&')
+    'sass-loader?' + sassParams.join('&')
   ].join('!');
 } else {
-  jsxLoader = ['babel?optional[]=runtime&stage=0&plugins=rewire'];
+  jsxLoader = ['babel-loader?optional[]=runtime&stage=0&plugins=rewire'];
   sassLoader = ExtractTextPlugin.extract('style', [
-    'css?modules&localIdentName=[hash:base64:5]',
-    'postcss',
-    'sass?' + sassParams.join('&')
+    'css-loader?modules&localIdentName=[hash:base64:5]',
+    'postcss-loader',
+    'sass-loader?' + sassParams.join('&')
   ].join('!'));
   cssLoader = ExtractTextPlugin.extract('style', [
-    'css?modules&localIdentName=[hash:base64:5]',
-    'postcss'
+    'css-loader?modules&localIdentName=[hash:base64:5]',
+    'postcss-loader'
   ].join('!'));
 }
 
+sassLoader = 'style-loader!css-loader!sass-loader';
+
 var loaders = [
   {
-    test: /\.jpe?g$|\.gif$|\.png$|\.ico|\.svg$|\.woff$|\.ttf$|\.mp3$/,
-    loader: 'file?name=./app/[path][name].[ext]'
+    test: require.resolve('./app/applab/main.js'),
+    loader: 'expose-loader?Applab'
+  },
+  {
+    test: require.resolve('./app/scss/app.scss'),
+    loader: 'expose-loader?Styles'
+  },
+  {
+    // shim for quadtree.js which doesn't export anything
+    test: require.resolve('droplet-editor/vendor/quadtree.js'),
+    loader: 'exports-loader?init=QUAD.init'
   },
   {
     // loader for entities json files
-    test: /entities\/maps\/.+?.json/,
+    test: /entities\/maps\/.+?.json$/,
     exclude: [/stats.json/],
     loaders: jsonLoader
+  },
+  {
+    test: /\.jpe?g$|\.gif$|\.png$|\.ico|\.svg$|\.woff$|\.ttf$|\.mp3$/,
+    loader: 'file-loader?name=./app/[path][name].[ext]'
   },
   {
     test: /\.jsx?$/,
@@ -149,15 +163,11 @@ var loaders = [
   },
   {
     test: /\.ejs$/,
-    loader: 'ejs-compiled?htmlmin'
+    loader: 'ejs-compiled-loader?htmlmin'
   },
   {
     test: /\.coffee$/,
-    loader: 'coffee'
-  },
-  {
-    test: /quadtree.js$/,
-    loader: 'exports-loader?QUAD.init!droplet-editor/vendor/quadtree.js'
+    loader: 'coffee-loader'
   }
 ];
 
@@ -197,9 +207,6 @@ var config = {
   module: {
     loaders: loaders
   },
-  postcss: [
-    //autoprefixer
-  ],
   plugins: plugins,
   resolve: {
     extensions: ['', '.js', '.json', '.jsx', '.coffee'],

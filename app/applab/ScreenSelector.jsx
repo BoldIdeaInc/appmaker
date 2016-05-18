@@ -1,8 +1,4 @@
 /** @file Dropdown for selecting design mode screens */
-/* global Applab */
-
-/** @file Dropdown for selecting design mode screens */
-/* global Applab */
 
 import React from 'react';
 import color from '../color';
@@ -50,11 +46,11 @@ var ScreenSelector = React.createClass({
 
     return (
       <select
-          id="screenSelector"
-          style={dropdownStyle}
-          value={this.props.currentScreenId}
-          onChange={this.props.onChange}
-          disabled={Applab.isRunning()}>
+        id='screenSelector'
+        style={dropdownStyle}
+        value={this.props.currentScreenId}
+        onChange={this.props.onChange}
+        disabled={Applab.isRunning()}>
         {options}
         <option>{constants.NEW_SCREEN}</option>
       </select>

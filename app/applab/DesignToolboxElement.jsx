@@ -2,7 +2,7 @@
 
 /* global $ */
 
-import 'jquery-ui'
+import 'jquery-ui';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import library from './designElements/library';
@@ -38,8 +38,8 @@ export default React.createClass({
           data-element-type={this.props.elementType}
           className='new-design-element'>
           <img src={this.props.imageUrl}
-              className='design-element-image'
-              style={styles.image}>
+            className='design-element-image'
+            style={styles.image}>
           </img>
           <div >{this.props.desc}</div>
         </div>
@@ -68,8 +68,6 @@ export default React.createClass({
         if (elementType === library.ElementType.SCREEN) {
           return $(this).clone();
         }
-        // FIXME: need to figure out how to pass Applab as first argument here.
-        debugger;
         var element = library.createElement(elementType, 0, 0, true);
         element.style.position = 'static';
 
@@ -79,8 +77,8 @@ export default React.createClass({
 
         var parent = $('<div/>').addClass('draggingParent');
 
-        parent[0].style.transform = "scale(" + xScale + ", " + yScale + ")";
-        parent[0].style.webkitTransform = "scale(" + xScale + ", " + yScale + ")";
+        parent[0].style.transform = 'scale(' + xScale + ', ' + yScale + ')';
+        parent[0].style.webkitTransform = 'scale(' + xScale + ', ' + yScale + ')';
         parent[0].style.backgroundColor = 'transparent';
 
         // Have the cursor be in the center of the dragged item.

@@ -5,7 +5,7 @@
 import React from 'react';
 import constants from './constants';
 import msg from '../locale';
-import actions from './actions';
+import * as actions from './actions';
 import {connect} from 'react-redux';
 import ScreenSelector from './ScreenSelector';
 import ToggleGroup from '../templates/ToggleGroup';

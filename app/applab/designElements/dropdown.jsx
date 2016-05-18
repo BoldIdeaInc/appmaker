@@ -1,6 +1,5 @@
-/* global $ */
-
-/* global $ */
+/* global $, HTMLElement, Applab */
+/* eslint-disable react/jsx-no-bind */
 
 import React from 'react';
 import PropertyRow from './PropertyRow';
@@ -30,29 +29,29 @@ var DropdownProperties = React.createClass({
           desc={'id'}
           initialValue={elementUtils.getId(element)}
           handleChange={this.props.handleChange.bind(this, 'id')}
-          isIdRow={true} />
+          isIdRow />
         <OptionsSelectRow
           desc={'options'}
           element={element}
           handleChange={this.props.handleChange.bind(this, 'options')} />
         <PropertyRow
           desc={'width (px)'}
-          isNumber={true}
+          isNumber
           initialValue={parseInt(element.style.width, 10)}
           handleChange={this.props.handleChange.bind(this, 'style-width')} />
         <PropertyRow
           desc={'height (px)'}
-          isNumber={true}
+          isNumber
           initialValue={parseInt(element.style.height, 10)}
           handleChange={this.props.handleChange.bind(this, 'style-height')} />
         <PropertyRow
           desc={'x position (px)'}
-          isNumber={true}
+          isNumber
           initialValue={parseInt(element.style.left, 10)}
           handleChange={this.props.handleChange.bind(this, 'left')} />
         <PropertyRow
           desc={'y position (px)'}
-          isNumber={true}
+          isNumber
           initialValue={parseInt(element.style.top, 10)}
           handleChange={this.props.handleChange.bind(this, 'top')} />
         <ColorPickerPropertyRow
@@ -65,13 +64,13 @@ var DropdownProperties = React.createClass({
           handleChange={this.props.handleChange.bind(this, 'backgroundColor')} />
         <PropertyRow
           desc={'font size (px)'}
-          isNumber={true}
+          isNumber
           initialValue={parseInt(element.style.fontSize, 10)}
           handleChange={this.props.handleChange.bind(this, 'fontSize')} />
         <EnumPropertyRow
           desc={'text alignment'}
           initialValue={element.style.textAlign || 'center'}
-          options={['left','right','center','justify']}
+          options={['left', 'right', 'center', 'justify']}
           handleChange={this.props.handleChange.bind(this, 'textAlign')} />
         <BooleanPropertyRow
           desc={'hidden'}
@@ -79,7 +78,7 @@ var DropdownProperties = React.createClass({
           handleChange={this.props.handleChange.bind(this, 'hidden')} />
         <ZOrderRow
           element={this.props.element}
-          onDepthChange={this.props.onDepthChange}/>
+          onDepthChange={this.props.onDepthChange} />
       </div>);
 
     // TODO:
@@ -120,12 +119,12 @@ var DropdownEvents = React.createClass({
           desc={'id'}
           initialValue={elementUtils.getId(element)}
           handleChange={this.props.handleChange.bind(this, 'id')}
-          isIdRow={true}/>
-        <EventHeaderRow/>
+          isIdRow />
+        <EventHeaderRow />
         <EventRow
           name={changeName}
           desc={changeDesc}
-          handleInsert={this.insertChange}/>
+          handleInsert={this.insertChange} />
       </div>
     );
   }

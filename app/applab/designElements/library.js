@@ -1,4 +1,4 @@
-/* global $ */
+/* global $, Applab */
 
 import * as elementUtils from './elementUtils';
 
@@ -93,13 +93,13 @@ export default {
    * @param {number} top Position from top.
    * @param {boolean} [withoutId] If true, don't generate an id
    */
-  createElement: function (app, elementType, left, top, withoutId) {
+  createElement: function (elementType, left, top, withoutId) {
     var elementClass = elements[elementType];
     if (!elementClass) {
       throw new Error('Unknown elementType: ' + elementType);
     }
 
-    var element = elementClass.create(app, withoutId);
+    var element = elementClass.create(withoutId);
 
     // Stuff that's common across all elements
     if (!withoutId) {

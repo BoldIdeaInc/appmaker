@@ -1,2 +1,6 @@
-@import "common";
-@import "applab/style";
+@import "./common";
+@import "./applab/style";
+@import "does-not-exist";
+
+yeah, this should cause an error.
+crapcode {

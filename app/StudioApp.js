@@ -1,4 +1,4 @@
-/* global location */
+/* global location, screen */
 import $ from 'jquery';
 import React from 'react';
 import ReactDOM from 'react-dom';
@@ -18,7 +18,7 @@ import url from 'url';
 import FeedbackUtils from './feedback';
 import VersionHistory from './templates/VersionHistory';
 import Alert from './templates/alert';
-import codegen from './codegen';
+import * as codegen from './codegen';
 import puzzleRatingUtils from './puzzleRatingUtils';
 import logToCloud from './logToCloud';
 import AuthoredHints from './authoredHints';
@@ -818,7 +818,6 @@ StudioApp.prototype.reset = function (shouldPlayOpeningAnimation) {
   // Override in app subclass
 };
 
-
 /**
  * Override to change run behavior.
  */
@@ -831,7 +830,7 @@ StudioApp.prototype.runButtonClick = function () {};
 StudioApp.prototype.toggleRunReset = function (button) {
   var showRun = (button === 'run');
   if (button !== 'run' && button !== 'reset') {
-    throw "Unexpected input";
+    throw new Error('Unexpected input');
   }
 
   var run = document.getElementById('runButton');
@@ -842,7 +841,7 @@ StudioApp.prototype.toggleRunReset = function (button) {
   reset.disabled = showRun;
 
   // Toggle soft-buttons (all have the 'arrow' class set):
-  $('.arrow').prop("disabled", showRun);
+  $('.arrow').prop('disabled', showRun);
 };
 
 /**
@@ -986,7 +985,6 @@ StudioApp.prototype.loadBlocks = function (blocksXml) {
 *    block position.
 */
 StudioApp.prototype.arrangeBlockPosition = function (startBlocks, arrangement) {
-
   var type, xmlChild;
 
   var xml = parseXmlElement(startBlocks);
@@ -1073,7 +1071,7 @@ StudioApp.prototype.getInstructionsContent_ = function (puzzleTitle, level, show
       renderedMarkdown={renderedMarkdown}
       markdownClassicMargins={level.markdownInstructionsWithClassicMargins}
       aniGifURL={level.aniGifURL}
-      authoredHints={authoredHints}/>
+      authoredHints={authoredHints}iii />
   );
 };
 
@@ -1086,9 +1084,9 @@ StudioApp.prototype.showInstructionsDialog_ = function (level, autoClose, showHi
   var isMarkdownMode = this.isMarkdownMode(level);
 
   var instructionsDiv = document.createElement('div');
-  instructionsDiv.className = isMarkdownMode ?
-    'markdown-instructions-container' :
-    'instructions-container';
+  instructionsDiv.className = isMarkdownMode
+    ? 'markdown-instructions-container'
+    : 'instructions-container';
 
   var headerElement;
 
@@ -1114,18 +1112,18 @@ StudioApp.prototype.showInstructionsDialog_ = function (level, autoClose, showHi
   // container just yet, because our React component could contain some
   // elements that don't want to be rendered until they are in the DOM
   var instructionsReactContainer = document.createElement('div');
-  instructionsReactContainer.className='instructions-content';
+  instructionsReactContainer.className = 'instructions-content';
   instructionsDiv.appendChild(instructionsReactContainer);
 
   var buttons = document.createElement('div');
   instructionsDiv.appendChild(buttons);
-  ReactDOM.render(<DialogButtons ok={true}/>, buttons);
+  ReactDOM.render(<DialogButtons ok />, buttons);
 
   // If there is an instructions block on the screen, we want the instructions dialog to
   // shrink down to that instructions block when it's dismissed.
   // We then want to flash the instructions block.
   var hideOptions = null;
-  var endTargetSelector = "#bubble";
+  var endTargetSelector = '#bubble';
 
   if ($(endTargetSelector).length) {
     hideOptions = {};
@@ -1135,9 +1133,9 @@ StudioApp.prototype.showInstructionsDialog_ = function (level, autoClose, showHi
   var hideFn = _.bind(function () {
     // Momentarily flash the instruction block white then back to regular.
     if ($(endTargetSelector).length) {
-      $(endTargetSelector).css({"background-color":"rgba(255,255,255,1)"})
+      $(endTargetSelector).css({'background-color': 'rgba(255,255,255,1)'})
         .delay(500)
-        .animate({"background-color":"rgba(0,0,0,0)"},1000);
+        .animate({'background-color': 'rgba(0,0,0,0)'}, 1000);
     }
     // Set focus to ace editor when instructions close:
     if (this.editCode && this.editor && !this.editor.currentlyUsingBlocks) {
@@ -1158,7 +1156,7 @@ StudioApp.prototype.showInstructionsDialog_ = function (level, autoClose, showHi
     defaultBtnSelector: '#ok-button',
     onHidden: hideFn,
     scrollContent: true,
-    scrollableSelector: ".instructions-content",
+    scrollableSelector: '.instructions-content',
     header: headerElement
   });
 
@@ -1332,7 +1330,7 @@ StudioApp.prototype.onMouseMoveVizResizeBar = function (event) {
  * Resize the visualization to the given width
  */
 StudioApp.prototype.resizeVisualization = function (width) {
-  var editorColumn = $(".editor-column");
+  var editorColumn = $('.editor-column');
   var visualization = document.getElementById('visualization');
   var visualizationResizeBar = document.getElementById('visualizationResizeBar');
   var visualizationColumn = document.getElementById('visualizationColumn');
@@ -1407,7 +1405,6 @@ StudioApp.prototype.onMouseUpVizResizeBar = function (event) {
     this.onMouseMoveBoundHandler = null;
   }
 };
-
 
 /**
 *  Updates the width of the toolbox-header to match the width of the toolbox
@@ -1504,8 +1501,8 @@ StudioApp.prototype.builderForm_ = function (onAttemptCallback) {
     var name = builderDetails.querySelector('[name="level_name"]').value;
     var query = url.parse(window.location.href, true).query;
     onAttemptCallback(utils.extend({
-      "instructions": instructions,
-      "name": name
+      'instructions': instructions,
+      'name': name
     }, query));
   });
 
@@ -1530,11 +1527,10 @@ StudioApp.prototype.report = function (options) {
     pass: this.feedback_.canContinueToNextLevel(options.testResult),
     time: ((new Date().getTime()) - this.initTime),
     attempt: this.attempts,
-    lines: this.feedback_.getNumBlocksUsed(),
+    lines: this.feedback_.getNumBlocksUsed()
   });
 
   this.lastTestResult = options.testResult;
-
 
   // If hideSource is enabled, the user is looking at a shared level that
   // they cannot have modified. In that case, don't report it to the service
@@ -1571,7 +1567,7 @@ StudioApp.prototype.clearAndAttachRuntimeAnnotations = function () {
     var session = this.editor.aceEditor.getSession();
     annotationList.attachToSession(session, this.editor);
     annotationList.clearRuntimeAnnotations();
-    this.editor.aceEditor.session.on("change", function () {
+    this.editor.aceEditor.session.on('change', function () {
       // clear any runtime annotations whenever a change is made
       annotationList.clearRuntimeAnnotations();
     });
@@ -1600,9 +1596,9 @@ StudioApp.prototype.updateBlockCount = function () {
   // set it to be yellow, otherwise, keep it as black.
   var element = document.getElementById('blockUsed');
   if (this.IDEAL_BLOCK_NUM < this.feedback_.getNumCountableBlocks()) {
-    element.className = "block-counter-overflow";
+    element.className = 'block-counter-overflow';
   } else {
-    element.className = "block-counter-default";
+    element.className = 'block-counter-default';
   }
 
   // Update number of blocks used.
@@ -1622,13 +1618,12 @@ StudioApp.prototype.setIdealBlockNumber_ = function () {
     return;
   }
 
-  var idealBlockNumberMsg = this.IDEAL_BLOCK_NUM === Infinity ?
-    msg.infinity() : this.IDEAL_BLOCK_NUM;
+  var idealBlockNumberMsg = this.IDEAL_BLOCK_NUM === Infinity
+    ? msg.infinity() : this.IDEAL_BLOCK_NUM;
   element.innerHTML = '';  // Remove existing children or text.
   element.appendChild(document.createTextNode(
     idealBlockNumberMsg));
 };
-
 
 /**
  *
@@ -1658,7 +1653,7 @@ StudioApp.prototype.fixViewportForSmallScreens_ = function (viewport, config) {
     'initial-scale=' + scale,
     'maximum-scale=' + scale,
     'minimum-scale=' + scale,
-    'target-densityDpi=device-dpi',
+    'width=device-width',
     'user-scalable=no'];
   viewport.setAttribute('content', content.join(', '));
 };
@@ -1706,8 +1701,9 @@ StudioApp.prototype.setConfigValues_ = function (config) {
   // Store configuration.
   this.onAttempt = config.onAttempt || function () {};
   this.onContinue = config.onContinue || function () {};
-  this.onInitialize = config.onInitialize ?
-                        config.onInitialize.bind(config) : function () {};
+  this.onInitialize = config.onInitialize
+    ? config.onInitialize.bind(config)
+    : function () {};
   this.onResetPressed = config.onResetPressed || function () {};
   this.backToPreviousLevel = config.backToPreviousLevel || function () {};
   this.skin = config.skin;
@@ -1761,9 +1757,9 @@ StudioApp.prototype.configureDom = function (config) {
       // If in level builder editing blocks, make workspace extra tall
       vizHeight = 3000;
       // Modify the arrangement of toolbox blocks so categories align left
-      if (config.level.edit_blocks == "toolbox_blocks") {
+      if (config.level.edit_blocks === 'toolbox_blocks') {
         this.blockYCoordinateInterval = 80;
-        config.blockArrangement = { category : { x: 20 } };
+        config.blockArrangement = { category: { x: 20 } };
       }
       // Enable param & var editing in levelbuilder, regardless of level setting
       config.level.disableParamEditing = false;
@@ -1772,14 +1768,14 @@ StudioApp.prototype.configureDom = function (config) {
 
     if (config.pinWorkspaceToBottom) {
       var bodyElement = document.body;
-      bodyElement.style.overflow = "hidden";
-      bodyElement.className = bodyElement.className + " pin_bottom";
-      container.className = container.className + " pin_bottom";
-      visualizationColumn.className = visualizationColumn.className + " pin_bottom";
-      codeWorkspace.className = codeWorkspace.className + " pin_bottom";
+      bodyElement.style.overflow = 'hidden';
+      bodyElement.className = bodyElement.className + ' pin_bottom';
+      container.className = container.className + ' pin_bottom';
+      visualizationColumn.className = visualizationColumn.className + ' pin_bottom';
+      codeWorkspace.className = codeWorkspace.className + ' pin_bottom';
       if (this.editCode) {
         var codeTextbox = document.getElementById('codeTextbox');
-        codeTextbox.className = codeTextbox.className + " pin_bottom";
+        codeTextbox.className = codeTextbox.className + ' pin_bottom';
       }
     } else {
       visualizationColumn.style.minHeight = vizHeight + 'px';
@@ -1794,17 +1790,17 @@ StudioApp.prototype.configureDom = function (config) {
   // NOTE: Can end up with embed true and hideSource false in level builder
   // scenarios. See https://github.com/code-dot-org/code-dot-org/pull/1744
   if (config.embed && config.hideSource && this.centerEmbedded) {
-    container.className = container.className + " centered_embed";
-    visualizationColumn.className = visualizationColumn.className + " centered_embed";
+    container.className = container.className + ' centered_embed';
+    visualizationColumn.className = visualizationColumn.className + ' centered_embed';
   }
 
   if (!config.embed && !config.hideSource) {
     // Make the visualization responsive to screen size, except on share page.
-    visualization.className += " responsive";
-    visualizationColumn.className += " responsive";
+    visualization.className += ' responsive';
+    visualizationColumn.className += ' responsive';
     var smallFooter = document.querySelector('#page-small-footer .small-footer-base');
     if (smallFooter) {
-      smallFooter.className += " responsive";
+      smallFooter.className += ' responsive';
     }
   }
 };
@@ -1865,7 +1861,6 @@ StudioApp.prototype.handleHideSource_ = function (options) {
   }
 };
 
-
 StudioApp.prototype.handleEditCode_ = function (config) {
   if (this.hideSource) {
     // In hide source mode, just call afterInject and exit immediately
@@ -1898,10 +1893,10 @@ StudioApp.prototype.handleEditCode_ = function (config) {
   aceEditor.session.setMode('ace/mode/javascript_codeorg');
 
   // Extend the command list on the ace Autocomplete object to include the period:
-  var Autocomplete = ace.acequire("ace/autocomplete").Autocomplete;
+  var Autocomplete = ace.acequire('ace/autocomplete').Autocomplete;
   Autocomplete.prototype.commands['.'] = function (editor) {
     // First, insert the period and update the completions:
-    editor.insert(".");
+    editor.insert('.');
     editor.completer.updateCompletions(true);
     var filtered = editor.completer.completions &&
         editor.completer.completions.filtered;
@@ -1916,7 +1911,7 @@ StudioApp.prototype.handleEditCode_ = function (config) {
     editor.completer.detach();
   };
 
-  var langTools = ace.acequire("ace/ext/language_tools");
+  var langTools = ace.acequire('ace/ext/language_tools');
 
   // We don't want to include the textCompleter. langTools doesn't give us a way
   // to remove base completers (note: it does in newer versions of ace), so
@@ -1932,7 +1927,7 @@ StudioApp.prototype.handleEditCode_ = function (config) {
   if (config.dropletConfig) {
     var functionsFilter = null;
     if (config.level.autocompletePaletteApisOnly) {
-       functionsFilter = config.level.codeFunctions;
+      functionsFilter = config.level.codeFunctions;
     }
 
     aceEditor.completers.push(
@@ -1962,7 +1957,7 @@ StudioApp.prototype.handleEditCode_ = function (config) {
   if (hideToolboxHeader && hideToolboxIcon && showToolboxHeader) {
     hideToolboxHeader.className += ' toggleable';
     hideToolboxIcon.style.display = 'inline-block';
-    var handleTogglePalette = (function () {
+    var handleTogglePalette = function () {
       if (this.editor) {
         this.editor.enablePalette(!this.editor.paletteEnabled);
         showToolboxHeader.style.display =
@@ -1971,7 +1966,7 @@ StudioApp.prototype.handleEditCode_ = function (config) {
             !this.editor.paletteEnabled ? 'none' : 'inline-block';
         this.resizeToolboxHeader();
       }
-    }).bind(this);
+    }.bind(this);
     dom.addClickTouchEvent(hideToolboxHeader, handleTogglePalette);
     dom.addClickTouchEvent(showToolboxHeader, handleTogglePalette);
   }
@@ -1980,7 +1975,6 @@ StudioApp.prototype.handleEditCode_ = function (config) {
 
   var startBlocks = config.level.lastAttempt || config.level.startBlocks;
   if (startBlocks) {
-
     try {
       // Don't pass CRLF pairs to droplet until they fix CR handling:
       this.editor.setValue(startBlocks.replace(/\r\n/g, '\n'));
@@ -1992,7 +1986,7 @@ StudioApp.prototype.handleEditCode_ = function (config) {
     // Reset droplet Undo stack:
     this.editor.clearUndoStack();
     // Reset ace Undo stack:
-    var UndoManager = ace.acequire("ace/undomanager").UndoManager;
+    var UndoManager = ace.acequire('ace/undomanager').UndoManager;
     this.editor.aceEditor.getSession().setUndoManager(new UndoManager());
   }
 
@@ -2401,7 +2395,7 @@ StudioApp.prototype.createCoordinateGridBackground = function (options) {
   var increment = options.increment;
 
   var CANVAS_HEIGHT = 400;
-  var CANVAS_WIDTH = 400;
+  // var CANVAS_WIDTH = 400;
 
   var svg = document.getElementById(svgName);
 
@@ -2450,18 +2444,18 @@ function rectFromElementBoundingBox(element) {
  * @param {React.Component} alertContents
  */
 StudioApp.prototype.displayWorkspaceAlert = function (type, alertContents) {
-  var container = this.displayAlert("#codeWorkspace", { type: type }, alertContents);
+  var container = this.displayAlert('#codeWorkspace', { type: type }, alertContents);
 
   var toolbarWidth;
   if (this.usingBlockly_) {
-    toolbarWidth = $(".blocklyToolboxDiv").width();
+    toolbarWidth = $('.blocklyToolboxDiv').width();
   } else {
-    toolbarWidth = $(".droplet-palette-element").width() + $(".droplet-gutter").width();
+    toolbarWidth = $('.droplet-palette-element').width() + $('.droplet-gutter').width();
   }
 
   $(container).css({
     left: toolbarWidth,
-    top: $("#headers").height()
+    top: $('#headers').height()
   });
 };
 
@@ -2471,7 +2465,7 @@ StudioApp.prototype.displayWorkspaceAlert = function (type, alertContents) {
  * @param {React.Component} alertContents
  */
 StudioApp.prototype.displayPlayspaceAlert = function (type, alertContents) {
-  StudioApp.prototype.displayAlert("#visualization", {
+  StudioApp.prototype.displayAlert('#visualization', {
     type: type,
     sideMargin: 20
   }, alertContents);
@@ -2524,7 +2518,7 @@ StudioApp.prototype.alertIfAbusiveProject = function (parentSelector) {
       tos: window.dashboard.i18n.t('project.abuse.tos'),
       contact_us: window.dashboard.i18n.t('project.abuse.contact_us')
     };
-    this.displayWorkspaceAlert('error', <dashboard.AbuseError i18n={i18n}/>);
+    this.displayWorkspaceAlert('error', <dashboard.AbuseError i18n={i18n} />);
   }
 };
 

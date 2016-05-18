@@ -1,7 +1,6 @@
 /* global ENV */
 import React from 'react';
 import appMain from '../appMain';
-import Applab from './main';
 import * as blocks from './blocks';
 import levels from './levels';
 import * as skins from './skins';

@@ -1,6 +1,4 @@
-/* global $ */
-
-/* global $ */
+/* global $, Applab */
 
 import React from 'react';
 import PropertyRow from './PropertyRow';
@@ -169,7 +167,7 @@ export default {
   PropertyTab: RadioButtonProperties,
   EventTab: RadioButtonEvents,
 
-  create: function (Applab, withoutId) {
+  create: function (withoutId) {
     var element = document.createElement('input');
     element.type = 'radio';
     element.style.width = '12px';

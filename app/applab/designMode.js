@@ -17,7 +17,7 @@ import {KeyCodes} from '../constants';
 import applabConstants from './constants';
 import sanitizeHtml from './sanitizeHtml';
 import utils from '../utils';
-import gridUtils from './gridUtils';
+import * as gridUtils from './gridUtils';
 import logToCloud from '../logToCloud';
 import * as actions from './actions';
 import pixelImg from '../media/1x1.gif';
@@ -98,7 +98,7 @@ export default function (Applab) {
    * @returns {HTMLElement} The generated element
    */
   designMode.createElement = function (elementType, left, top) {
-    var element = elementLibrary.createElement(Applab, elementType, left, top);
+    var element = elementLibrary.createElement(elementType, left, top);
 
     var parent;
     var isScreen = $(element).hasClass('screen');
@@ -896,7 +896,7 @@ export default function (Applab) {
    * @returns {string} The id of the newly created screen
    */
   designMode.createScreen = function () {
-    var newScreen = elementLibrary.createElement(Applab, 'SCREEN', 0, 0);
+    var newScreen = elementLibrary.createElement('SCREEN', 0, 0);
     $('#designModeViz').append(newScreen);
 
     return elementUtils.getId(newScreen);
@@ -996,7 +996,7 @@ export default function (Applab) {
       return html;
     }
 
-    var screenElement = elementLibrary.createElement(Applab, elementLibrary.ElementType.SCREEN);
+    var screenElement = elementLibrary.createElement(elementLibrary.ElementType.SCREEN);
     rootDiv.children().appendTo(screenElement);
     rootDiv.append(screenElement);
 

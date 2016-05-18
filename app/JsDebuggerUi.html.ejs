@@ -1,5 +1,8 @@
-<% var i18n = require('./locale'); %>
-<% var pixelImg = require('./media/1x1.gif'); %>
+<%
+var i18n = require('./locale');
+var pixelImg = require('./media/1x1.gif');
+var turtleIcons = require('./media/turtle_icons.png');
+%>
 
 <div id="debug-area">
   <div id="debugResizeBar" class="fa fa-ellipsis-h"></div>
@@ -31,13 +34,13 @@
           <clipPath id="slowClipPath">
             <rect width=26 height=12 x=5 y=6 />
           </clipPath>
-          <image xlink:href="<%= assetUrl('media/turtle_icons.png') %>" height=42 width=84 x=-21 y=-18
+          <image xlink:href="<%= turtleIcons %>" height=42 width=84 x=-21 y=-18
               clip-path="url(#slowClipPath)" />
           <!-- Fast icon. -->
           <clipPath id="fastClipPath">
             <rect width=26 height=16 x=120 y=2 />
           </clipPath>
-          <image xlink:href="<%= assetUrl('media/turtle_icons.png') %>" height=42 width=84 x=120 y=-19
+          <image xlink:href="<%= turtleIcons %>" height=42 width=84 x=120 y=-19
               clip-path="url(#fastClipPath)" />
       </svg>
     </div>
