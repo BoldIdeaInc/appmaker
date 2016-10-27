@@ -93,8 +93,7 @@ if (DEBUG || TEST) {
   sassParams.push('sourceMap', 'sourceMapContents=true');
   cssLoader = [
     'style-loader',
-    'css-loader?sourceMap&modules&localIdentName=[local]',
-    'postcss-loader'
+    'css-loader?sourceMap&modules&localIdentName=[local]'
   ].join('!');
   sassLoader = [
     cssLoader,
@@ -104,16 +103,14 @@ if (DEBUG || TEST) {
   jsxLoader = ['babel-loader?optional[]=runtime&stage=0&plugins=rewire'];
   sassLoader = ExtractTextPlugin.extract('style', [
     'css-loader?modules&localIdentName=[hash:base64:5]',
-    'postcss-loader',
     'sass-loader?' + sassParams.join('&')
   ].join('!'));
   cssLoader = ExtractTextPlugin.extract('style', [
-    'css-loader?modules&localIdentName=[hash:base64:5]',
-    'postcss-loader'
+    'css-loader?modules&localIdentName=[hash:base64:5]'
   ].join('!'));
 }
 
-sassLoader = 'style-loader!css-loader!sass-loader';
+// sassLoader = 'style-loader!css-loader!sass-loader';
 
 var loaders = [
   {
